@@ -9,18 +9,18 @@ header = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, l
 opener.addheaders = [('User-Agent', header)]
 urllib.request.install_opener(opener)
 
-
 def get_pics(urls, names):
     output_dir = 'images'
     os.makedirs(output_dir, exist_ok=True)
     for idx, url in enumerate(tqdm(urls)):
         output_path = os.path.join(output_dir, names[idx])
-        try:
-            urlretrieve(url, output_path)
-        except Exception:
-            print(url)
-            continue
-
+        if not os.path.exists(output_path):  # Check if the file already exists
+            try:
+                urlretrieve(url, output_path)
+            except Exception as e:
+                print(f"Failed to download {url}: {e}")
+        else:
+            print(f"Skipping download. {names[idx]} already exists.")
 
 if __name__ == '__main__':
     df = pd.read_csv('downloading_script/image_list.csv')
@@ -28,4 +28,3 @@ if __name__ == '__main__':
     names = df['image_name'].values.tolist()
 
     get_pics(urls, names)
-
