@@ -64,7 +64,7 @@ class BBDataset(Dataset):
 
         primary_images_path = os.path.join(BASE_PATH, 'images')
         secondary_images_path = '/kaggle/input/baid-dataset-full-set-of-images/images'
-        
+                                 
         # Determine which images path exists and use it
         if os.path.exists(primary_images_path):
             self.base_images_path = primary_images_path
@@ -109,7 +109,7 @@ class BBDataset(Dataset):
         labels = DATA['score'].values.tolist()
         pic_paths = DATA['image'].values.tolist()
         for i in tqdm(range(len(pic_paths))):
-            pic_path = os.path.join('images', pic_paths[i])
+            pic_path = os.path.join(self.base_images_path, pic_paths[i])
             label = float(labels[i] / 10)
             self.pic_paths.append(pic_path)
             self.labels.append(label)

@@ -15,7 +15,7 @@ from tqdm import tqdm
 from config import BASE_PATH, SAVE_DIR
 import os
 
-test_dataset = BBDataset(file_dir='dataset', type='validation', test=True)
+test_dataset = BBDataset(file_dir='dataset', type='test', test=True)
 
 def parse_args():
     parser = argparse.ArgumentParser()
