@@ -12,20 +12,28 @@ import torch.nn.functional as F
 import pandas as pd
 import scipy
 from tqdm import tqdm
+from config import BASE_PATH, SAVE_DIR
+import os
 
 test_dataset = BBDataset(file_dir='dataset', type='validation', test=True)
 
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--device', type=str, default='cuda')
-    parser.add_argument('--checkpoint_dir', type=str,
-                        default='checkpoint/BAID')
-    parser.add_argument('--checkpoint_name', type=str,
-                        default='model_best.pth')
-    parser.add_argument('--save_dir', type=str,
-                        default='result')
+    parser.add_argument('--checkpoint_dir', type=str, default=os.path.join(BASE_PATH, 'checkpoint/BAID'))
+    parser.add_argument('--checkpoint_name', type=str, default='model_best.pth')
+    parser.add_argument('--save_dir', type=str, default=os.path.join(SAVE_DIR, 'result.csv'))
+    args = parser.parse_args()
 
-    return parser.parse_args()
+    # Adjusting save_dir for Kaggle outputs
+    if BASE_PATH.startswith('/kaggle/input'):
+        args.save_dir = '/kaggle/working/result'
+    else:
+        args.save_dir = os.path.join(BASE_PATH, 'result')
+
+    return args
+
+
 
 
 def test(args):
