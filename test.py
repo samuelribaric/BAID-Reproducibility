@@ -50,7 +50,7 @@ def test(args):
     model.eval()
 
     test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, pin_memory=True, num_workers=8)
-
+    print(f"Number of items in test_loader: {len(test_loader.dataset)}")
     with torch.no_grad():
         for step, test_data in tqdm(enumerate(test_loader)):
             image = test_data[0].to(device)
@@ -58,12 +58,10 @@ def test(args):
             predicted_label = model(image)
             prediction = predicted_label.squeeze().cpu().numpy()
             predictions.append(prediction * 10)
-            print(f"Number of items in test_loader: {len(test_loader)}")
-            print(f"Number of predictions: {len(predictions)}")
-            print(f"Number of scores: {len(scores)}")
+        
 
     scores = df['score'].values.tolist()
-
+    print(f"Number of scores: {len(scores)}")
     print(scipy.stats.spearmanr(scores, predictions))
     print(scipy.stats.pearsonr(scores, predictions))
 
