@@ -40,7 +40,7 @@ def parse_args():
 def test(args):
     device = torch.device(args.device)  # Ensure device is set correctly as a torch.device object
     checkpoint_path = os.path.join(args.checkpoint_dir, args.checkpoint_name)
-    df = pd.read_csv('dataset/test_set.csv')
+    df = pd.read_csv(os.path.join(BASE_PATH,'dataset/test_set.csv'))
     predictions = []
 
     model = SAAN(num_classes=1)

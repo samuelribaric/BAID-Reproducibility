@@ -3,12 +3,19 @@ import torch.nn as nn
 from torchvision.models import vgg19, VGG19_Weights, resnet50, ResNet50_Weights, resnet18
 import torch.nn.functional as F
 from .layers import adain, NonLocalBlock
-
+from config import BASE_PATH, SAVE_DIR
+import os
+CHECKPOINT_DIR = 'checkpoint/ResNet_Pretrain'
+CHECKPOINT_FILENAME = 'epoch_99.pth'
 
 class VGG(nn.Module):   # output relu4-1
     def __init__(self):
         super(VGG, self).__init__()
-        model = vgg19(weights=VGG19_Weights.DEFAULT)
+        model = vgg19(pretrained=False)  # Initialize model without downloading weights
+        # Construct the path to the VGG pretrained weights within your checkpoint directory
+        weights_path = os.path.join(BASE_PATH, 'checkpoint', 'VGG', 'vgg19_weights.pth')
+        # Load the pretrained weights
+        model.load_state_dict(torch.load(weights_path))
         self.model = nn.Sequential(*model.features[:21])
         self._freeze_params()
 
@@ -59,9 +66,8 @@ class SAB(nn.Module):
 
     def _init_weights(self):
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        self.model.load_state_dict(torch.load('checkpoint/ResNet_Pretrain/epoch_99.pth', map_location=device),
-                                   strict=False)
-
+        checkpoint_path = os.path.join(BASE_PATH, CHECKPOINT_DIR, CHECKPOINT_FILENAME)
+        self.model.load_state_dict(torch.load(checkpoint_path, map_location=device), strict=False)
 
 class GAB(nn.Module):
     def __init__(self):
@@ -93,8 +99,8 @@ class GAB(nn.Module):
 
     def _init_weights(self):
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        self.model.load_state_dict(torch.load('checkpoint/ResNet_Pretrain/epoch_99.pth', map_location=device),
-                                   strict=False)
+        checkpoint_path = os.path.join(BASE_PATH, CHECKPOINT_DIR, CHECKPOINT_FILENAME)
+        self.model.load_state_dict(torch.load(checkpoint_path, map_location=device), strict=False)
 
 
 class SAAN(nn.Module):
