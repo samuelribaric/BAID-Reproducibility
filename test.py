@@ -58,6 +58,9 @@ def test(args):
             predicted_label = model(image)
             prediction = predicted_label.squeeze().cpu().numpy()
             predictions.append(prediction * 10)
+            print(f"Number of items in test_loader: {len(test_loader)}")
+            print(f"Number of predictions: {len(predictions)}")
+            print(f"Number of scores: {len(scores)}")
 
     scores = df['score'].values.tolist()
 
