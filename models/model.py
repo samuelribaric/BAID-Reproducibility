@@ -58,8 +58,9 @@ class SAB(nn.Module):
         return F.relu(output)
 
     def _init_weights(self):
-        self.model.load_state_dict(torch.load('checkpoint/ResNet_Pretrain/epoch_99.pth'),
-                                    strict=False)
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.model.load_state_dict(torch.load('checkpoint/ResNet_Pretrain/epoch_99.pth', map_location=device),
+                                   strict=False)
 
 
 class GAB(nn.Module):
@@ -91,8 +92,9 @@ class GAB(nn.Module):
         return x
 
     def _init_weights(self):
-        self.model.load_state_dict(torch.load('checkpoint/ResNet_Pretrain/epoch_99.pth'),
-                                    strict=False)
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.model.load_state_dict(torch.load('checkpoint/ResNet_Pretrain/epoch_99.pth', map_location=device),
+                                   strict=False)
 
 
 class SAAN(nn.Module):

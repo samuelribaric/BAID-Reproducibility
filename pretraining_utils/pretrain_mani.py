@@ -5,18 +5,20 @@ from operations import *
 import random
 from tqdm import tqdm
 import pandas as pd
+import sys
+from config import BASE_PATH, SAVE_DIR
 
-original_dir = 'pretrain_data/ori'
-opt1_dir = 'pretrain_data/opt1/ori'
-opt2_dir = 'pretrain_data/opt2/ori'
-opt3_dir = 'pretrain_data/opt3/ori'
+original_dir = os.path.join(SAVE_DIR, 'pretrain_data/ori')
+opt1_dir = os.path.join(SAVE_DIR, 'pretrain_data/opt1/ori')
+opt2_dir = os.path.join(SAVE_DIR, 'pretrain_data/opt2/ori')
+opt3_dir = os.path.join(SAVE_DIR, 'pretrain_data/opt3/ori')
 
-trp11_dir = 'pretrain_data/opt1/trp1'
-trp12_dir = 'pretrain_data/opt1/trp2'
-trp21_dir = 'pretrain_data/opt2/trp1'
-trp22_dir = 'pretrain_data/opt2/trp2'
-trp31_dir = 'pretrain_data/opt3/trp1'
-trp32_dir = 'pretrain_data/opt3/trp2'
+trp11_dir = os.path.join(SAVE_DIR, 'pretrain_data/opt1/trp1')
+trp12_dir = os.path.join(SAVE_DIR, 'pretrain_data/opt1/trp2')
+trp21_dir = os.path.join(SAVE_DIR, 'pretrain_data/opt2/trp1')
+trp22_dir = os.path.join(SAVE_DIR, 'pretrain_data/opt2/trp2')
+trp31_dir = os.path.join(SAVE_DIR, 'pretrain_data/opt3/trp1')
+trp32_dir = os.path.join(SAVE_DIR, 'pretrain_data/opt3/trp2')
 
 dirs = [original_dir, opt1_dir, opt2_dir, opt3_dir, trp11_dir, trp12_dir, trp21_dir, trp22_dir, trp31_dir, trp32_dir]
 
@@ -43,7 +45,7 @@ def opt_trp(original_image, image_mixup, trp1, trp2):
 
 
 def process_data():
-    df = pd.read_csv('pretraining_utils/operations.csv')
+    df = pd.read_csv(os.path.join(BASE_PATH, 'pretraining_utils/operations.csv'))
 
     file_list = df['original'].values.tolist()
     opts1 = df['opt1'].values.tolist()

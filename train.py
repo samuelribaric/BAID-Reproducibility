@@ -8,19 +8,21 @@ from models.model import SAAN
 import torch.optim as optim
 from common import *
 import argparse
-
+from config import BASE_PATH, SAVE_DIR
+import os
 
 train_dataset = BBDataset(file_dir='dataset', type='train', test=False)
 val_dataset = BBDataset(file_dir='dataset', type='validation', test=True)
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--device', type=str, default='cuda')
+    default_device = "cuda" if torch.cuda.is_available() else "cpu"
+    parser.add_argument('--device', type=str, default=default_device)
     parser.add_argument('--lr', type=float, default=1e-5)
     parser.add_argument('--epoch', type=int, default=100)
     parser.add_argument('--batch_size', type=int, default=64)
     parser.add_argument('--checkpoint_dir', type=str,
-                        default='checkpoint/SAAN')
+                        default=os.path.join(BASE_PATH, 'checkpoint/BAID'))
     parser.add_argument('--val_freq', type=int,
                         default=2)
     parser.add_argument('--save_freq', type=int,

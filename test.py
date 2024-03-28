@@ -19,7 +19,8 @@ test_dataset = BBDataset(file_dir='dataset', type='validation', test=True)
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--device', type=str, default='cuda')
+    default_device = "cuda" if torch.cuda.is_available() else "cpu"
+    parser.add_argument('--device', type=str, default=default_device)
     parser.add_argument('--checkpoint_dir', type=str, default=os.path.join(BASE_PATH, 'checkpoint/BAID'))
     parser.add_argument('--checkpoint_name', type=str, default='model_best.pth')
     parser.add_argument('--save_dir', type=str, default=os.path.join(SAVE_DIR, 'result.csv'))
@@ -37,14 +38,15 @@ def parse_args():
 
 
 def test(args):
-    device = args.device
+    device = torch.device(args.device)  # Ensure device is set correctly as a torch.device object
     checkpoint_path = os.path.join(args.checkpoint_dir, args.checkpoint_name)
     df = pd.read_csv('dataset/test_set.csv')
     predictions = []
 
     model = SAAN(num_classes=1)
     model = model.to(device)
-    model.load_state_dict(torch.load(checkpoint_path))
+    # Modify this line to include map_location, using the device variable
+    model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.eval()
 
     test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, pin_memory=True, num_workers=8)
@@ -76,6 +78,7 @@ def test(args):
 
     save_path = os.path.join(args.save_dir, 'result.csv')
     df.to_csv(save_path, index=False)
+
 
 
 if __name__ == '__main__':
