@@ -3,7 +3,7 @@ import os
 # Check for a Kaggle-specific environment variable or path
 if os.path.exists('/kaggle/input'):
     # Running on Kaggle
-    BASE_PATH = '/kaggle/input/baid-reproducibility/BAID-Reproducibility'
+    BASE_PATH = '/kaggle/input/baid-reproducibility_test/BAID-Reproducibility'
     SAVE_DIR = '/kaggle/working/result'
 else:
     # Assume running locally. Dynamically set BASE_PATH based on the script's location.
