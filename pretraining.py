@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from data import PretrainingDataset
-from model import ResNetPretrain
+from models.model import ResNetPretrain
 import argparse
 import torch.optim as optim
 from pretraining_utils.pretrain_losses import cal_deg_loss, cal_trp_loss
