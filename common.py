@@ -6,30 +6,29 @@ import os
 import torch
 from config import BASE_PATH, SAVE_DIR
 
-def adjust_learning_rate(args, optimizer, epoch):
-    """Sets the learning rate to the initial LR decayed by 10 every 10 epochs"""
-    if epoch < 40:
-        lr = args.lr * (0.1 ** (epoch // 10))
-    else:
-        lr = args.lr * (0.1 ** 4)
+import os
+import torch
+from config import BASE_PATH, SAVE_DIR
 
+def adjust_learning_rate(args, optimizer, epoch):
+    lr = args.lr * (0.1 ** (epoch // 10)) if epoch < 40 else args.lr * (0.1 ** 4)
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 
-
-def save_checkpoint(args, model, epoch):
-    # Determine the base path for saving based on the environment
-    if BASE_PATH.startswith('/kaggle/input'):
-        # In Kaggle, adjust to a directory where you have write access
-        checkpoint_dir = '/kaggle/working'
-    else:
-        # Locally, use the directory specified in args
-        checkpoint_dir = args.checkpoint_dir
-    
-    # Ensure the directory exists
+def save_checkpoint(args, model, optimizer, epoch):
+    checkpoint_dir = '/kaggle/working' if BASE_PATH.startswith('/kaggle/input') else args.checkpoint_dir
     if not os.path.exists(checkpoint_dir):
         os.makedirs(checkpoint_dir)
-    
-    # Construct the save path and save the model checkpoint
-    save_path = os.path.join(checkpoint_dir, f"epoch_{epoch}.pth")
-    torch.save(model.state_dict(), save_path)
+    save_path = os.path.join(checkpoint_dir, 'model_best.pth')
+    torch.save({'epoch': epoch, 'model_state_dict': model.state_dict(), 'optimizer_state_dict': optimizer.state_dict()}, save_path)
+
+def load_checkpoint(args, model, optimizer):
+    checkpoint_path = os.path.join(args.checkpoint_dir, 'model_best.pth')
+    start_epoch = 0
+    if os.path.exists(checkpoint_path):
+        checkpoint = torch.load(checkpoint_path)
+        model.load_state_dict(checkpoint['model_state_dict'])
+        optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        start_epoch = checkpoint['epoch'] + 1
+        print(f"Resuming from epoch {start_epoch}")
+    return start_epoch, optimizer

@@ -21,14 +21,12 @@ def parse_args():
     parser.add_argument('--lr', type=float, default=1e-5)
     parser.add_argument('--epoch', type=int, default=100)
     parser.add_argument('--batch_size', type=int, default=64)
-    parser.add_argument('--checkpoint_dir', type=str,
-                        default=os.path.join(BASE_PATH, 'checkpoint/BAID'))
-    parser.add_argument('--val_freq', type=int,
-                        default=2)
-    parser.add_argument('--save_freq', type=int,
-                        default=2)
+    parser.add_argument('--checkpoint_dir', type=str, default=os.path.join(SAVE_DIR, 'checkpoint/BAID'))
+    parser.add_argument('--val_freq', type=int, default=2)
+    parser.add_argument('--save_freq', type=int, default=2)
+    args = parser.parse_args()
+    return args
 
-    return parser.parse_args()
 
 
 def validate(args, model, val_loader, epoch):
@@ -51,38 +49,33 @@ def validate(args, model, val_loader, epoch):
 
 def train(args):
     device = args.device
-
-    model = SAAN(num_classes=1)
-    for name, param in model.named_parameters():
-        if 'GenAes' in name:
-            param.requires_grad = False
-    model = model.to(device)
-
-    loss = nn.MSELoss()
+    model = SAAN(num_classes=1).to(device)
 
     optimizer = optim.Adam(model.parameters(), lr=args.lr, betas=(0.5, 0.999), weight_decay=5e-4)
 
+    # Attempt to load a previously saved checkpoint
+    start_epoch, optimizer = load_checkpoint(args, model, optimizer)
+
+    train_dataset = BBDataset(file_dir='dataset', type='train', test=False)
     train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, pin_memory=True, num_workers=8)
+
+    val_dataset = BBDataset(file_dir='dataset', type='validation', test=True)
     val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False, pin_memory=True)
 
-    for epoch in range(args.epoch):
+    for epoch in range(start_epoch, args.epoch):
         model.train()
         epoch_loss = 0.0
 
         for step, train_data in enumerate(train_loader):
+            image, label = train_data[0].to(device), train_data[1].to(device).float()
             optimizer.zero_grad()
-            image = train_data[0].to(device)
-            label = train_data[1].to(device).float()
-
             predicted_label = model(image).squeeze()
-            train_loss = loss(predicted_label, label)
-
+            train_loss = nn.MSELoss()(predicted_label, label)
             train_loss.backward()
             optimizer.step()
-
             epoch_loss += train_loss.item()
 
-            print("Epoch: %3d Step: %5d / %5d Train loss: %.8f" % (epoch, step, len(train_loader), train_loss.item()))
+        print(f"Epoch: {epoch} Train Loss: {epoch_loss / len(train_loader)}")
 
         adjust_learning_rate(args, optimizer, epoch)
 
@@ -90,7 +83,7 @@ def train(args):
             validate(args, model, val_loader, epoch)
 
         if (epoch + 1) % args.save_freq == 0:
-            save_checkpoint(args, model, epoch)
+            save_checkpoint(args, model, optimizer, epoch)
 
 
 if __name__ == '__main__':
