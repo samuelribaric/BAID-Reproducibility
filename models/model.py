@@ -3,9 +3,9 @@ import torch.nn as nn
 from torchvision.models import vgg19, VGG19_Weights, resnet50, ResNet50_Weights, resnet18
 import torch.nn.functional as F
 from .layers import adain, NonLocalBlock
-from config import BASE_PATH, SAVE_DIR
+from config import BASE_PATH
 import os
-CHECKPOINT_DIR = 'checkpoint/ResNet_Pretrain'
+CHECKPOINT_DIR_RESNET = 'checkpoint/ResNet_Pretrain'
 CHECKPOINT_FILENAME = 'epoch_99.pth'
 
 class VGG(nn.Module):   # output relu4-1
@@ -66,7 +66,7 @@ class SAB(nn.Module):
 
     def _init_weights(self):
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        checkpoint_path = os.path.join(BASE_PATH, CHECKPOINT_DIR, CHECKPOINT_FILENAME)
+        checkpoint_path = os.path.join(BASE_PATH, CHECKPOINT_DIR_RESNET, CHECKPOINT_FILENAME)
         self.model.load_state_dict(torch.load(checkpoint_path, map_location=device), strict=False)
 
 class GAB(nn.Module):
@@ -99,7 +99,7 @@ class GAB(nn.Module):
 
     def _init_weights(self):
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        checkpoint_path = os.path.join(BASE_PATH, CHECKPOINT_DIR, CHECKPOINT_FILENAME)
+        checkpoint_path = os.path.join(BASE_PATH, CHECKPOINT_DIR_RESNET, CHECKPOINT_FILENAME)
         self.model.load_state_dict(torch.load(checkpoint_path, map_location=device), strict=False)
 
 

@@ -12,7 +12,7 @@ import torch.nn.functional as F
 import pandas as pd
 import scipy
 from tqdm import tqdm
-from config import BASE_PATH, SAVE_DIR
+from config import BASE_PATH, RESULT_DIR
 import os
 
 test_dataset = BBDataset(file_dir='dataset', type='test', test=True)
@@ -23,7 +23,7 @@ def parse_args():
     parser.add_argument('--device', type=str, default=default_device)
     parser.add_argument('--checkpoint_dir', type=str, default=os.path.join(BASE_PATH, 'checkpoint/BAID'))
     parser.add_argument('--checkpoint_name', type=str, default='model_best.pth')
-    parser.add_argument('--save_dir', type=str, default=os.path.join(SAVE_DIR, 'result.csv'))
+    parser.add_argument('--save_dir', type=str, default=os.path.join(RESULT_DIR, 'result.csv'))
     args = parser.parse_args()
 
     # Adjusting save_dir for Kaggle outputs

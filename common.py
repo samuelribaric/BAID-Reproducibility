@@ -4,11 +4,11 @@ Common utils for training
 
 import os
 import torch
-from config import BASE_PATH, SAVE_DIR
+from config import BASE_PATH, CHECKPOINT_DIR
 
 import os
 import torch
-from config import BASE_PATH, SAVE_DIR
+from config import BASE_PATH, CHECKPOINT_DIR
 
 def adjust_learning_rate(args, optimizer, epoch):
     lr = args.lr * (0.1 ** (epoch // 10)) if epoch < 40 else args.lr * (0.1 ** 4)
@@ -25,8 +25,11 @@ def save_checkpoint(args, model, optimizer, epoch):
 def load_checkpoint(args, model, optimizer=None):
     checkpoint_path = os.path.join(args.checkpoint_dir, 'model_best.pth')
     start_epoch = 0
+    # Check if CUDA is available, and set the map_location accordingly
+    map_location = 'cuda' if torch.cuda.is_available() else 'cpu'
+    
     if os.path.exists(checkpoint_path):
-        checkpoint = torch.load(checkpoint_path)
+        checkpoint = torch.load(checkpoint_path, map_location=map_location)
         print(f"Checkpoint keys: {list(checkpoint.keys())}")  # Diagnostic print
         model.load_state_dict(checkpoint['model_state_dict'])
         if optimizer and 'optimizer_state_dict' in checkpoint:
@@ -36,3 +39,4 @@ def load_checkpoint(args, model, optimizer=None):
     else:
         print(f"No checkpoint found at {checkpoint_path}")  # Diagnostic print if file not found
     return start_epoch, model, optimizer if optimizer else model
+

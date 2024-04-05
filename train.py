@@ -8,7 +8,7 @@ from models.model import SAAN
 import torch.optim as optim
 from common import *
 import argparse
-from config import BASE_PATH, SAVE_DIR
+from config import BASE_PATH, CHECKPOINT_DIR
 import os
 
 train_dataset = BBDataset(file_dir='dataset', type='train', test=False)
@@ -21,7 +21,7 @@ def parse_args():
     parser.add_argument('--lr', type=float, default=1e-5)
     parser.add_argument('--epoch', type=int, default=100)
     parser.add_argument('--batch_size', type=int, default=64)
-    parser.add_argument('--checkpoint_dir', type=str, default=os.path.join(SAVE_DIR, 'checkpoint/BAID'))
+    parser.add_argument('--checkpoint_dir', type=str, default=os.path.join(BASE_PATH, 'checkpoint/BAID'))
     parser.add_argument('--val_freq', type=int, default=2)
     parser.add_argument('--save_freq', type=int, default=2)
     args = parser.parse_args()

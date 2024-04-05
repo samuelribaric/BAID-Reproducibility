@@ -8,7 +8,7 @@ import time
 import os
 from tqdm import tqdm
 import pandas as pd
-from config import BASE_PATH, SAVE_DIR
+from config import BASE_PATH
 mean = [0.485, 0.456, 0.406]  # RGB
 std = [0.229, 0.224, 0.225]
 
