@@ -46,9 +46,19 @@ def test(args):
     model = SAAN(num_classes=1)
     model = model.to(device)
     # Modify this line to include map_location, using the device variable
-    model.load_state_dict(torch.load(checkpoint_path, map_location=device))
+    
+    # model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.eval()
-
+    if os.path.exists(checkpoint_path):
+        checkpoint = torch.load(checkpoint_path, map_location=device)
+        if "model_state_dict" in checkpoint:
+            model.load_state_dict(checkpoint['model_state_dict'])
+        else:
+            # This line is for directly loading model checkpoints without the encapsulating dictionary
+            model.load_state_dict(torch.load(checkpoint_path, map_location=device))
+    else:
+        print("No checkpoint found at {}".format(checkpoint_path))
+        
     test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, pin_memory=True, num_workers=8)
     print(f"Number of items in test_loader: {len(test_loader.dataset)}")
     with torch.no_grad():

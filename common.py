@@ -27,10 +27,12 @@ def load_checkpoint(args, model, optimizer=None):
     start_epoch = 0
     if os.path.exists(checkpoint_path):
         checkpoint = torch.load(checkpoint_path)
+        print(f"Checkpoint keys: {list(checkpoint.keys())}")  # Diagnostic print
         model.load_state_dict(checkpoint['model_state_dict'])
-        if optimizer is not None and 'optimizer_state_dict' in checkpoint:
+        if optimizer and 'optimizer_state_dict' in checkpoint:
             optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-        start_epoch = checkpoint['epoch'] + 1
+        start_epoch = checkpoint.get('epoch', 0) + 1  # Use .get() to avoid KeyError
         print(f"Resuming from epoch {start_epoch}")
-    return start_epoch, model, optimizer
-
+    else:
+        print(f"No checkpoint found at {checkpoint_path}")  # Diagnostic print if file not found
+    return start_epoch, model, optimizer if optimizer else model

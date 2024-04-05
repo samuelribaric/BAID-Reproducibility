@@ -54,7 +54,8 @@ def train(args):
     optimizer = optim.Adam(model.parameters(), lr=args.lr, betas=(0.5, 0.999), weight_decay=5e-4)
 
     # Attempt to load a previously saved checkpoint
-    start_epoch, optimizer = load_checkpoint(args, model, optimizer)
+    start_epoch,_ , optimizer = load_checkpoint(args, model, optimizer)
+    print(start_epoch)
 
     train_dataset = BBDataset(file_dir='dataset', type='train', test=False)
     train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, pin_memory=True, num_workers=8)
@@ -63,6 +64,7 @@ def train(args):
     val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False, pin_memory=True)
 
     for epoch in range(start_epoch, args.epoch):
+        
         model.train()
         epoch_loss = 0.0
 
