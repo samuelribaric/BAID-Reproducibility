@@ -74,8 +74,7 @@ def train(args):
             train_loss.backward()
             optimizer.step()
             epoch_loss += train_loss.item()
-
-        print(f"Epoch: {epoch} Train Loss: {epoch_loss / len(train_loader)}")
+            print("Epoch: %3d Step: %5d / %5d Train loss: %.8f" % (epoch, step, len(train_loader), train_loss.item()))
 
         adjust_learning_rate(args, optimizer, epoch)
 
