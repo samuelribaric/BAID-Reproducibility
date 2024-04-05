@@ -22,13 +22,15 @@ def save_checkpoint(args, model, optimizer, epoch):
     save_path = os.path.join(checkpoint_dir, 'model_best.pth')
     torch.save({'epoch': epoch, 'model_state_dict': model.state_dict(), 'optimizer_state_dict': optimizer.state_dict()}, save_path)
 
-def load_checkpoint(args, model, optimizer):
+def load_checkpoint(args, model, optimizer=None):
     checkpoint_path = os.path.join(args.checkpoint_dir, 'model_best.pth')
     start_epoch = 0
     if os.path.exists(checkpoint_path):
         checkpoint = torch.load(checkpoint_path)
         model.load_state_dict(checkpoint['model_state_dict'])
-        optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        if optimizer is not None and 'optimizer_state_dict' in checkpoint:
+            optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
         start_epoch = checkpoint['epoch'] + 1
         print(f"Resuming from epoch {start_epoch}")
-    return start_epoch, optimizer
+    return start_epoch, model, optimizer
+
