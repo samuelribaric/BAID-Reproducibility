@@ -50,12 +50,4 @@ Provide a brief overview of the results, perhaps with tables or figures if appro
 ## Discussion
 
 Discuss any discrepancies, unexpected findings, or conclusions drawn from the reproduction effort.
-@InProceedings{Yi_2023_CVPR,
-    author    = {Yi, Ran and Tian, Haoyuan and Gu, Zhihao and Lai, Yu-Kun and Rosin, Paul L.},
-    title     = {Towards Artistic Image Aesthetics Assessment: A Large-Scale Dataset and a New Method},
-    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-    month     = {June},
-    year      = {2023},
-    pages     = {22388-22397}
-}
-```
+
