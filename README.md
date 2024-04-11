@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this project, we aimed to reproduce the results of [Original Paper/Algorithm Name] using existing codebases. Our goal was to verify the results by evaluating the original code, testing it against different datasets, rewriting the code for efficiency and readability, and performing an in-depth hyperparameter sensitivity analysis.
+In our reproduction project, we revisited the CVPR2023 paper entitled "Towards Artistic Image Aesthetics Assessment: a Large-scale Dataset and a New Method" which introduces a significant dataset, BAID, and a novel method, SAAN (Style-specific Art Assessment Network). This paper addresses the subjective and complex task of artistic image aesthetic assessment (AIAA) by proposing a large-scale dataset of 60,337 artistic images and a new method that integrates style-specific and generic aesthetic information. Our objective was to replicate the results presented in the paper to validate the efficacy of SAAN and explore its performance on different datasets, rewriting the code for efficiency and readability, and perform an in-depth hyperparameter sensitivity analysis.
 
 ## Methodology
 
@@ -16,10 +16,10 @@ In this project, we aimed to reproduce the results of [Original Paper/Algorithm 
 - **Data Collection**: We sourced additional datasets from [data source] to assess the model's robustness and generalizability. The new datasets include...
 - **Results on New Data**: The model's performance on new datasets showed...
 
-### Code Refactoring
+#### New Code Variant: Code Revamping
 
-- **Refactoring Process**: The existing code was refactored to enhance [performance/readability]. Key changes included...
-- **Impact of Refactoring**: Post-refactoring, we observed changes in [execution time/memory usage].
+- **Refactoring Process**: The original code was revamped for efficient execution on Kaggle and local environments. We undertook extensive debugging and testing to align file paths, ensuring minimal setup hassle for future users when switching between local work-environment and Kaggle.
+- **Impact of Refactoring**: 
 
 ### Hyperparameter Sensitivity Analysis
 
