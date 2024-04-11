@@ -1,82 +1,55 @@
-## Official repository for CVPR2023 paper: "Towards Artistic Image Aesthetics Assessment: a Large-scale Dataset and a New Method"
+## Official repository for Reproduction of CVPR2023 paper: "Towards Artistic Image Aesthetics Assessment: a Large-scale Dataset and a New Method"
 
-### Dataset
+## Introduction
 
-- Clone the repository
-```
-git clone https://github.com/Dreemurr-T/BAID.git
-cd BAID/
-```
+In this project, we aimed to reproduce the results of [Original Paper/Algorithm Name] using existing codebases. Our goal was to verify the results by evaluating the original code, testing it against different datasets, rewriting the code for efficiency and readability, and performing an in-depth hyperparameter sensitivity analysis.
 
-- Install the necessary dependencies using:
-```
-pip install pandas
-pip install tqdm
-```
-- Download the dataset using:
-```
-python downloading_script/download.py
-```
-The images will be saved to `images/` folder.
+## Methodology
 
-Since it might be slow when downloading the images, we provide alternatives to obtain the dataset:
+### Existing Code Evaluation
 
-- Baidu Netdisk: [Link](https://pan.baidu.com/s/19pxr19neJ6Pmd0B6A_u55Q), Code: 9y91
-- Google Drive: Coming soon
+- **Description**: We began by evaluating the existing code from [source/repository]. Our evaluation process involved...
+- **Findings**: During the code evaluation, we noticed...
 
-Ground-truth labels of the dataset can be found in the `dataset` folder.
+### New Data Evaluation
 
-### Code
-#### Requirements
+- **Data Collection**: We sourced additional datasets from [data source] to assess the model's robustness and generalizability. The new datasets include...
+- **Results on New Data**: The model's performance on new datasets showed...
 
-- Python >= 3.8
-- Pytorch >= 1.12.0
-- Torchvision >= 0.13.0
+### Code Refactoring
 
-Other dependencies can be installed with:
-```
-pip install -r requirements.txt
-```
+- **Refactoring Process**: The existing code was refactored to enhance [performance/readability]. Key changes included...
+- **Impact of Refactoring**: Post-refactoring, we observed changes in [execution time/memory usage].
 
-#### Pretraining
-- Download the BAID dataset and place the images in the `images/` folder
-- Preprocess the data using:
-```
-python pretraining_utils/pretrain_mani.py
-```
+### Hyperparameter Sensitivity Analysis
 
-- Pretrain the ResNet50 backbone using:
-```
-python pretraining.py
-```
-The whole pretraining process takes about 2 days on a single RTX3090. We provide our pretrained weights at [Drive](https://drive.google.com/file/d/13aPiVT4xyu2w5VUwt6vDMJY1n2hXHKWc/view?usp=drive_link).
+- **Approach**: We systematically varied hyperparameters such as [list a few hyperparameters] to understand their impact on model performance.
+- **Key Insights**: The sensitivity analysis revealed that...
 
-#### Training
+## Results
 
-For training on BAID, use:
-```
-python train.py
-```
-Checkpoints will be save to `checkpoint/SAAN` folder.
+Provide a brief overview of the results, perhaps with tables or figures if appropriate.
 
-#### Testing
+### Reproduced Results
 
-For testing on BAID, download the pretrained weights from [Drive](https://drive.google.com/file/d/1e2XPZjW92HFCUErNHzbmUtk204miAklS/view?usp=drive_link), place the checkpoint in `checkpoint/BAID`
+- **Original vs. Reproduced**: Compared to the original implementation, our reproduced results are...
+- **Challenges Encountered**: We faced challenges such as...
 
-Then use:
-```
-python test.py
-```
+### New Data Results
 
-### License
-The dataset is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+- **Consistency Across Datasets**: The model's consistency across various datasets was evaluated, revealing...
 
-### Acknowledgement
-The code borrowed from [pytorch-AdaIN](https://github.com/naoto0804/pytorch-AdaIN) and [Non-local_pytorch](https://github.com/AlexHex7/Non-local_pytorch).
+### New Code Variant Results
 
-### Citation
-If you find our work useful, please cite our work as:
-```bibtex
+- **Performance Comparison**: With the refactored code, the performance [improved/remained consistent] because...
+
+### Hyperparameter Analysis
+
+- **Critical Hyperparameters**: Our analysis highlighted [hyperparameter] as particularly influential because...
+
+## Discussion
+
+Discuss any discrepancies, unexpected findings, or conclusions drawn from the reproduction effort.
 @InProceedings{Yi_2023_CVPR,
     author    = {Yi, Ran and Tian, Haoyuan and Gu, Zhihao and Lai, Yu-Kun and Rosin, Paul L.},
     title     = {Towards Artistic Image Aesthetics Assessment: A Large-Scale Dataset and a New Method},
