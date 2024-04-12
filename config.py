@@ -10,7 +10,7 @@ else:
     # Assume running locally. Dynamically set BASE_PATH based on the script's location.
     # This sets BASE_PATH to the script's directory, allowing for flexibility across different local environments.
     BASE_PATH = os.path.dirname(os.path.realpath(__file__))
-    CHECKPOINT_DIR = os.path.join(BASE_PATH, 'checkpoint', 'BAID')  # Adjust as needed for your local path
+    CHECKPOINT_DIR = os.path.join(BASE_PATH, 'checkpoint', 'BAID')  
     RESULT_DIR = os.path.join(BASE_PATH, 'result')
 
 # Additional configuration variables can be added here
