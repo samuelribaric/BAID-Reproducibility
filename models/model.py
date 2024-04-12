@@ -42,14 +42,9 @@ class SAB(nn.Module):
         self.model.layer2 = model.layer2
 
         self.identity = identity
-
-        self.vgg = VGG()
-
         self._init_weights()
 
     def forward(self, x):
-        # aligned to the output of VGG
-        sty = self.vgg(x)
         aes = self.model.conv1(x)
         aes = self.model.bn1(aes)
         aes = self.model.relu(aes)
@@ -58,11 +53,12 @@ class SAB(nn.Module):
         aes = self.model.layer1(aes)
         aes = self.model.layer2(aes)
 
-        output = adain(aes, sty)
+        output = aes  # Directly using aesthetic features without style adaptation
         if self.identity:
             output += aes
 
         return F.relu(output)
+
 
     def _init_weights(self):
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
