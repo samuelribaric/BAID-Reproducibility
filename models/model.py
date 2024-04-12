@@ -28,46 +28,61 @@ class VGG(nn.Module):   # output relu4-1
             p.requires_grad = False
 
 
+# class SAB(nn.Module):
+#     def __init__(self, identity=False):
+#         super(SAB, self).__init__()
+#         model = resnet50()
+#         self.model = nn.Module()
+#         self.model.conv1 = model.conv1
+#         self.model.bn1 = model.bn1
+#         self.model.relu = model.relu
+#         self.model.maxpool = model.maxpool
+
+#         self.model.layer1 = model.layer1
+#         self.model.layer2 = model.layer2
+
+#         self.identity = identity
+
+#         self.vgg = VGG()
+
+#         self._init_weights()
+
+#     def forward(self, x):
+#         # aligned to the output of VGG
+#         sty = self.vgg(x)
+#         aes = self.model.conv1(x)
+#         aes = self.model.bn1(aes)
+#         aes = self.model.relu(aes)
+#         aes = self.model.maxpool(aes)
+
+#         aes = self.model.layer1(aes)
+#         aes = self.model.layer2(aes)
+
+#         output = adain(aes, sty)
+#         if self.identity:
+#             output += aes
+
+#         return F.relu(output)
+
+#     def _init_weights(self):
+#         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+#         checkpoint_path = os.path.join(BASE_PATH, CHECKPOINT_DIR_RESNET, CHECKPOINT_FILENAME)
+#         self.model.load_state_dict(torch.load(checkpoint_path, map_location=device), strict=False)
+
 class SAB(nn.Module):
     def __init__(self, identity=False):
         super(SAB, self).__init__()
-        model = resnet50()
-        self.model = nn.Module()
-        self.model.conv1 = model.conv1
-        self.model.bn1 = model.bn1
-        self.model.relu = model.relu
-        self.model.maxpool = model.maxpool
-
-        self.model.layer1 = model.layer1
-        self.model.layer2 = model.layer2
-
+        self.vgg = VGG()  # Only using VGG for style features
         self.identity = identity
 
-        self.vgg = VGG()
-
-        self._init_weights()
-
     def forward(self, x):
-        # aligned to the output of VGG
         sty = self.vgg(x)
-        aes = self.model.conv1(x)
-        aes = self.model.bn1(aes)
-        aes = self.model.relu(aes)
-        aes = self.model.maxpool(aes)
 
-        aes = self.model.layer1(aes)
-        aes = self.model.layer2(aes)
-
-        output = adain(aes, sty)
+        output = sty  # Directly using style features without ResNet aesthetic processing
         if self.identity:
-            output += aes
+            output += sty  # This line might not make sense if identity is meant to add input and aesthetic features. Adjust if needed.
 
         return F.relu(output)
-
-    def _init_weights(self):
-        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        checkpoint_path = os.path.join(BASE_PATH, CHECKPOINT_DIR_RESNET, CHECKPOINT_FILENAME)
-        self.model.load_state_dict(torch.load(checkpoint_path, map_location=device), strict=False)
 
 class GAB(nn.Module):
     def __init__(self):

@@ -105,6 +105,12 @@ class BBDataset(Dataset):
             DATA = pd.read_csv(os.path.join(full_file_dir, 'val_set.csv'))
         elif type == 'test':
             DATA = pd.read_csv(os.path.join(full_file_dir, 'test_set.csv'))
+        elif type == 'form_data1':
+            DATA = pd.read_csv(os.path.join(full_file_dir, 'form_data1.csv'))
+        elif type == 'form_data2':
+            DATA = pd.read_csv(os.path.join(full_file_dir, 'form_data2.csv'))
+        elif type == 'form_data3':
+            DATA = pd.read_csv(os.path.join(full_file_dir, 'form_data3.csv'))
 
         labels = DATA['score'].values.tolist()
         pic_paths = DATA['image'].values.tolist()
