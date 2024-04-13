@@ -136,5 +136,38 @@ This section provides an overview of the outcomes from our project efforts, incl
 
 ## Discussion
 
-Discuss any discrepancies, unexpected findings, or conclusions drawn from the reproduction effort.
+### Unusual Findings and Their Implications
+
+#### Earlier Training Stages Yielded Better Results
+One notable observation from our reproduction study was that earlier training epochs, particularly Epoch 39, showed slightly better performance in terms of accuracy compared to the final model at Epoch 99. This could suggest potential overfitting as the training progressed, or it might indicate that the model reaches an optimal state of learning earlier than anticipated. This finding prompts a reevaluation of the training duration and may lead to more efficient training strategies by implementing early stopping or adjusting learning rates dynamically.
+
+### Insights from the Ablation Study
+
+#### Performance without ResNet
+The ablation study highlighted significant performance drops when the ResNet component was removed from the model architecture. This underscores ResNet's role in capturing complex patterns in artistic aesthetics, which are possibly pivotal for higher accuracy in assessments. The results demonstrate the importance of deep architectures in handling the nuanced task of image aesthetic assessment.
+
+#### Significance and Pearson Metrics
+The consistently low p-values observed in our tests underscore the statistical significance of the results obtained, confirming that the findings are unlikely due to random chance. Meanwhile, the Pearson correlation coefficients provide insights into the linear correlation between model predictions and human judgments, reflecting the model's effectiveness in mimicking human aesthetic assessments.
+
+### Implications of New Data Results
+
+#### Challenges with New Datasets
+Testing the model on new datasets composed of images rated via a Google Form revealed lower performance. This could be attributed to several factors:
+- **Dataset Quality and Size**: The new dataset was smaller and not curated with the same rigor as the BAID dataset.
+- **Voting Bias**: The voting mechanism allowed participants to rate images without comparison, potentially skewing the results towards more favorable outcomes.
+
+This highlights the challenges in generalizing the trained models across different datasets and underscores the importance of dataset design in training robust models.
+
+### Reflection on Methodological Variations
+
+#### Code Revamping Impact
+The introduction of a dynamic path management and weight loading system proved crucial for adapting the SAAN model to different computational environments and for facilitating continuous training sessions. These improvements not only enhanced the model's usability across platforms but also prevented potential data loss, thereby making the research process more resilient and efficient.
+
+### Concluding Thoughts
+
+The discrepancies and unexpected findings from our reproduction effort suggest that while the SAAN model is robust under certain conditions, its performance varies significantly with changes in dataset characteristics and model architecture. These insights are invaluable for future research in the field of artistic image aesthetics assessment, providing a clearer path towards refining and adapting these models for broader applications.
+
+Further studies should focus on exploring the impact of different architectural components more systematically and expanding the model's testing across diverse datasets to better understand its generalizability and limitations.
+
+
 
