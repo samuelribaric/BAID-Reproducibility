@@ -59,8 +59,9 @@ Besides this, the sample size of 25 images and 64 votes on the form is still ver
 
 The spreadsheet with all of the results and additional calculations can be found [here](https://docs.google.com/spreadsheets/d/1R3sYHwE8HyBdyatLHbCgOrEzwhEw8QQJ-6G7sv1jh-8/edit?usp=sharing)!
 
-##Ablation Study##
+## Ablation Study ##
 
+Add our methodology and reasoning for removing VGG and Resnet here, maybe include picture of the model from the paper as well
 
 ## Results
 
