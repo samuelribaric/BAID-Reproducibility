@@ -83,6 +83,7 @@ This section provides an overview of the outcomes from our project efforts, incl
 ### Reproduced Results
 
 #### Initial Test with Weights from Authors
+
 | Metric                     | Value                  |
 |----------------------------|------------------------|
 | Significance Statistic     | 0.4721614384229233     |
@@ -92,6 +93,7 @@ This section provides an overview of the outcomes from our project efforts, incl
 | Accuracy                   | 0.7673073917799657     |
 
 #### Epoch 39 (First training)
+
 | Metric                     | Value                  |
 |----------------------------|------------------------|
 | Significance Statistic     | 0.46154713882667087    |
@@ -101,6 +103,7 @@ This section provides an overview of the outcomes from our project efforts, incl
 | Accuracy                   | 0.7798093452101891     |
 
 #### Epoch 99 (Finished Training)
+
 | Metric                     | Value                  |
 |----------------------------|------------------------|
 | Significance Statistic     | 0.46196337871776366    |
@@ -108,9 +111,11 @@ This section provides an overview of the outcomes from our project efforts, incl
 | Pearson Statistic          | 0.4673758142171795     |
 | Pearson p-value            | 0.0                    |
 | Accuracy                   | 0.7788716987029223     |
+
 ### Ablation Study: Performance without ResNet
 
 #### Test on Various Datasets
+
 | Dataset        | Significance Statistic | Significance p-value  | Pearson Statistic  | Pearson p-value     | Accuracy   |
 |----------------|------------------------|-----------------------|--------------------|---------------------|------------|
 | BAID           | 0.0985474602591078     | 2.769451136158405e-15 | 0.1029179598080305 | 1.5432773274448345e-16 | 0.23816221284575714 |
@@ -121,6 +126,7 @@ This section provides an overview of the outcomes from our project efforts, incl
 ### Performance without VGG
 
 #### Test on Various Datasets
+
 | Dataset        | Significance Statistic | Significance p-value | Pearson Statistic  | Pearson p-value     | Accuracy   |
 |----------------|------------------------|----------------------|--------------------|---------------------|------------|
 | BAID           | 0.28059646018021484    | 4.315794067754801e-116| 0.2753714573832638 | 1.0384372460027474e-111 | 0.7610564150648539 |
