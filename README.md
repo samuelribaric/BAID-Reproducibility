@@ -35,16 +35,6 @@ Given the extensive computational demands of training the SAAN model — taking 
 - **Approach**: We systematically varied hyperparameters such as [list a few hyperparameters] to understand their impact on model performance.
 - **Key Insights**: The sensitivity analysis revealed that...
 
-## Results
-
-Provide a brief overview of the results, perhaps with tables or figures if appropriate.
-
-### Reproduced Results
-
-- **Original vs. Reproduced**: Compared to the original implementation, our reproduced results are...
-- **Challenges Encountered**: We faced challenges such as...
-
-### New Data Results
 
 #### Experimental Dataset
 We decided to run an experiment on a different dataset of new images. For this, we downloaded 25 copyright free images of (oil) paintings (unsplashed.com) and put these images in a google form. For each image, the person filling in the form gets two tasks: 
@@ -85,15 +75,62 @@ Besides this, the sample size of 25 images and 64 votes on the form is still ver
 
 The spreadsheet with all of the results and additional calculations can be found [here](https://docs.google.com/spreadsheets/d/1R3sYHwE8HyBdyatLHbCgOrEzwhEw8QQJ-6G7sv1jh-8/edit?usp=sharing)!
 
-- **Consistency Across Datasets**: The model's consistency across various datasets was evaluated, revealing...
 
-### New Code Variant Results
 
-- **Performance Comparison**: With the refactored code, the performance [improved/remained consistent] because...
+## Results
 
-### Hyperparameter Analysis
+This section provides an overview of the outcomes from our project efforts, including reproducing the original paper's results, evaluating new datasets, and conducting an ablation study with modified model configurations.
 
-- **Critical Hyperparameters**: Our analysis highlighted [hyperparameter] as particularly influential because...
+### Reproduced Results
+
+#### Initial Test with Weights from Authors
+| Metric | Value |
+|--------|-------|
+| Significance Statistic | 0.4721614384229233 |
+| Significance p-value | 0.0 |
+| Pearson Statistic | 0.466993115611886 |
+| Pearson p-value | 0.0 |
+| Accuracy | 0.7673073917799657 |
+
+### Model Training and Validation
+
+#### Epoch 39 (First training)
+| Metric | Value |
+|--------|-------|
+| Significance Statistic | 0.46154713882667087 |
+| Significance p-value | 0.0 |
+| Pearson Statistic | 0.4676182473919227 |
+| Pearson p-value | 0.0 |
+| Accuracy | 0.7798093452101891 |
+
+#### Epoch 99 (Finished Training)
+| Metric | Value |
+|--------|-------|
+| Significance Statistic | 0.46196337871776366 |
+| Significance p-value | 0.0 |
+| Pearson Statistic | 0.4673758142171795 |
+| Pearson p-value | 0.0 |
+| Accuracy | 0.7788716987029223 |
+
+### Ablation Study: Performance without ResNet
+
+#### Test on Various Datasets
+| Dataset | Significance Statistic | Significance p-value | Pearson Statistic | Pearson p-value | Accuracy |
+|---------|------------------------|----------------------|-------------------|-----------------|----------|
+| BAID | 0.0985474602591078 | 2.769451136158405e-15 | 0.1029179598080305 | 1.5432773274448345e-16 | 0.23816221284575714 |
+| form_data1.csv | -0.31844457134806753 | 0.12080277186000737 | -0.2940150947209376 | 0.15370386745737993 | 0.24 |
+| form_data2.csv | -0.3046153846153846 | 0.13872654983076974 | -0.2776495897322667 | 0.1790218015069261 | 0.08 |
+| form_data3.csv | -0.31844457134806753 | 0.12080277186000737 | -0.2953613439152013 | 0.1517407447601908 | 0.32 |
+
+### Performance without VGG
+
+#### Test on Various Datasets
+| Dataset | Significance Statistic | Significance p-value | Pearson Statistic | Pearson p-value | Accuracy |
+|---------|------------------------|----------------------|-------------------|-----------------|----------|
+| BAID | 0.28059646018021484 | 4.315794067754801e-116 | 0.2753714573832638 | 1.0384372460027474e-111 | 0.7610564150648539 |
+| form_data1.csv | 0.0685406695283628 | 0.7447714241446419 | -0.015240836022584673 | 0.9423577832017125 | 0.2 |
+| form_data2.csv | 0.09923076923076923 | 0.6369836836671996 | 0.08233920024385069 | 0.6955871335049199 | 0.04 |
+| form_data3.csv | 0.0685406695283628 | 0.7447714241446419 | -0.01461946420573074 | 0.9447042784323637 | 0.36 |
 
 ## Discussion
 
