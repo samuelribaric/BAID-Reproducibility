@@ -6,17 +6,7 @@ In our reproduction project, we revisited the CVPR2023 paper entitled "Towards A
 
 ## Methodology
 
-### Existing Code Evaluation
-
-- **Description**: We began by evaluating the existing code from [source/repository]. Our evaluation process involved...
-- **Findings**: During the code evaluation, we noticed...
-
-### New Data Evaluation
-
-- **Data Collection**: We sourced additional datasets from [data source] to assess the model's robustness and generalizability. The new datasets include...
-- **Results on New Data**: The model's performance on new datasets showed...
-
-#### New Code Variant: Code Revamping
+### New Code Variant: Code Revamping
 To address the challenge of executing the SAAN model across different platforms, we introduced an intelligent path management system. We crafted a configuration file that discerns whether the code is running on Kaggle's cloud compute or a local machine. This adaptive config file dynamically assigns file paths used throughout the codebase, significantly streamlining the process of dataset and resource handling. This innovation eliminates the need for manual path adjustments, thereby reducing the setup time and potential for unpredictable holdups and human error. Here are the main aspects of this new configuration:
 
 - **Automatic Path Detection**: A configuration file is now included that auto-determines the running environment and adjusts file paths utilized in the code accordingly.
@@ -30,13 +20,7 @@ Given the extensive computational demands of training the SAAN model — taking 
 - **Impact of Refactoring**:
 
 
-### Hyperparameter Sensitivity Analysis
-
-- **Approach**: We systematically varied hyperparameters such as [list a few hyperparameters] to understand their impact on model performance.
-- **Key Insights**: The sensitivity analysis revealed that...
-
-
-#### Experimental Dataset
+#### New Dataset
 We decided to run an experiment on a different dataset of new images. For this, we downloaded 25 copyright free images of (oil) paintings (unsplashed.com) and put these images in a google form. For each image, the person filling in the form gets two tasks: 
 - Answer *Yes* or *No* to the question: Do you consider this artwork to be pleasing and good-looking?
 - Give a rating of the artwork on a scale of 1 to 10
@@ -75,6 +59,7 @@ Besides this, the sample size of 25 images and 64 votes on the form is still ver
 
 The spreadsheet with all of the results and additional calculations can be found [here](https://docs.google.com/spreadsheets/d/1R3sYHwE8HyBdyatLHbCgOrEzwhEw8QQJ-6G7sv1jh-8/edit?usp=sharing)!
 
+##Ablation Study##
 
 
 ## Results
