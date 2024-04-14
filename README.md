@@ -8,6 +8,10 @@ Margot Pauelsen
 6063969
 m.pauelsen@student.tudelft.nl
 
+Thom van der Velden
+5076110
+t.vandervelden-1@student.tudelft.nl
+
 Samuel Ribaric
 6119115
 s.ribaric@student.tudelft.nl
@@ -277,3 +281,6 @@ Further studies should focus on exploring the impact of different architectural 
 
 ### Margot
 - **Responsible for:** VAPS dataset experiment
+
+### Thom
+- **Worked on:** ablation study, custom dataset, running different experiments for ablation study and reproduction
