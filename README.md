@@ -242,3 +242,9 @@ The discrepancies and unexpected findings from our reproduction effort suggest t
 
 Further studies should focus on exploring the impact of different architectural components more systematically and expanding the model's testing across diverse datasets to better understand its generalizability and limitations.
 
+## Individual Contributions
+
+### Samuel
+- **Responsible for:** New code variant criteria
+- **Also worked on:** Reproduction, Ablation Study, Specifically: Training the model and reproducing the results as well as modifying the code for the ablation study
+
