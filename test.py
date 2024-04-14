@@ -15,7 +15,7 @@ from tqdm import tqdm
 from config import BASE_PATH, RESULT_DIR
 import os
 
-test_dataset = BBDataset(file_dir='dataset', type='test', test=True)
+test_dataset = BBDataset(file_dir='dataset', type='data1', test=True)
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -40,7 +40,7 @@ def parse_args():
 def test(args):
     device = torch.device(args.device)  # Ensure device is set correctly as a torch.device object
     checkpoint_path = os.path.join(args.checkpoint_dir, args.checkpoint_name)
-    df = pd.read_csv(os.path.join(BASE_PATH,'dataset/test_set.csv'))
+    df = pd.read_csv(os.path.join(BASE_PATH,'dataset/form_data1.csv'))
     predictions = []
 
     model = SAAN(num_classes=1)

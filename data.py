@@ -62,7 +62,7 @@ class BBDataset(Dataset):
         self.if_test = test
 
 
-        primary_images_path = os.path.join(BASE_PATH, 'images')
+        primary_images_path = os.path.join(BASE_PATH, 'new-images')
         secondary_images_path = '/kaggle/input/baid-dataset-full-set-of-images/images'
                                  
         # Determine which images path exists and use it
@@ -105,6 +105,12 @@ class BBDataset(Dataset):
             DATA = pd.read_csv(os.path.join(full_file_dir, 'val_set.csv'))
         elif type == 'test':
             DATA = pd.read_csv(os.path.join(full_file_dir, 'test_set.csv'))
+        elif type == 'data1':
+            DATA = pd.read_csv(os.path.join(full_file_dir, 'form_data1.csv'))
+        elif type == 'data2':
+            DATA = pd.read_csv(os.path.join(full_file_dir, 'form_data2.csv'))
+        elif type == 'data3':
+            DATA = pd.read_csv(os.path.join(full_file_dir, 'form_data3.csv'))
 
         labels = DATA['score'].values.tolist()
         pic_paths = DATA['image'].values.tolist()
