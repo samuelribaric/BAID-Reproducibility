@@ -37,6 +37,8 @@ RESULTS HERE
 The accuracy and scores of the model were very low.
 We quickly realized that the grades we got from the form were way higher than the grades of the images in the BAID dataset that were used to train the model, and we had to make some changes. We used the same sigmoid-like function used in the paper to get new scores based on the amount of *Yes* votes: 
 
+![sigmoid function](https://github.com/samuelribaric/BAID-Reproducibility/assets/57133973/fa6577b5-358c-4c4f-a8a5-10d6a3bb7363)
+
 For our results, the variables can be explained as follows:
 - V_mi is the average number of Yes votes for the 25 images, which turned out to be 46.04 (a lot of people liked the majority of the paintings).
 - V_i is the amount of Yes votes of image i.
