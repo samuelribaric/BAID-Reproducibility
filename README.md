@@ -61,9 +61,6 @@ The spreadsheet with all of the results and additional calculations can be found
 
 We thought it would be interesting to see what would happen when we did an ablation study for this project. In the paper it is mentioned how they combine multiple components like a Style Feature Extractor (VGG) and an AestheticFeature Extractor (Restnet). We decided to take these components out of the training loop and see what the results would be. The performance can be seen in the results section, right below this section. It immediately strikes out that the model performs really bad when Resnet is taken out of the loop. However, when VGG is taken out of the loop it performs similarly as when it was still in the loop. This was a really interesting result and this could mean that VGG is not really neccessary for this model to perform well on the given dataset. We also ran these models on our own dataset. The meaning of each of the form datas can be found in the new dataset part, right above this part. Because it was only 25 pictures, the results are not significant at all and the results are also really bad. However we thought it was fun to check what the model would do and the results can be seen in the results section below.
 
-<img src="https://github.com/samuelribaric/BAID-Reproducibility/assets/44850442/6da4e2c9-0bef-4a95-8ddb-a14ec440cd4d" alt="11064" width="200"/>
-
-This is a picture of an example image out of the dataset. When rated by people, it got a rating of 4.352386. When ran on the model, the rating returned was a: I DO NOT HAVE THE RATINGS TO MY DISPOSAL IT IS IMAGE 11064
 
 ## Results
 
@@ -124,21 +121,21 @@ We tested our model with selected artworks to compare the initial aesthetic scor
 
 ### Artwork 1
 
-![Artwork 1](https://github.com/samuelribaric/BAID-Reproducibility/docs/15418.jpg "Artwork Analysis 1")
+![Artwork 1](https://github.com/samuelribaric/BAID-Reproducibility/tree/experimental/kaggle/docs/15418.jpg "Artwork Analysis 1")
 
 - **Initial Score:** 5.6506
 - **Model's Prediction:** 4.303
 
 ### Artwork 2
 
-![Artwork 2](https://github.com/samuelribaric/BAID-Reproducibility/docs/61963.jpg "Artwork Analysis 2")
+![Artwork 2](https://github.com/samuelribaric/BAID-Reproducibility/tree/experimental/kaggle/docs/61963.jpg "Artwork Analysis 2")
 
 - **Initial Score:** 5.3349
 - **Model's Prediction:** 4.660
 
 ### Artwork 3
 
-![Artwork 3](https://github.com/samuelribaric/BAID-Reproducibility/docs/49509.jpg "Artwork Analysis 3")
+![Artwork 3](https://github.com/samuelribaric/BAID-Reproducibility/tree/experimental/kaggle/docs/49509.jpg "Artwork Analysis 3")
 
 - **Initial Score:** 7.8236
 - **Model's Prediction:** 5.466
