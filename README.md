@@ -157,7 +157,7 @@ Our ablation study results provided intriguing insights, particularly when contr
 ### Specific Findings from Our Study
 
 #### Impact of Removing VGG and ResNet
-- **Without VGG**: The performance of our model showed minimal impact when the VGG, responsible for style-specific feature extraction, was removed. This was somewhat unexpected given the importance typically attributed to style in artistic assessments, but it indicates that the remaining components of the model can compensate effectively for the loss of style-specific input.
+- **Without VGG**: The performance of our model showed minimal impact when the VGG, responsible for style-specific feature extraction (SAB), was removed. This was somewhat unexpected given the importance typically attributed to style in artistic assessments, but it indicates that the remaining components of the model can compensate effectively for the loss of style-specific input.
   
 - **Without ResNet**: Contrary to the minimal impact seen with the removal of VGG, eliminating ResNet resulted in a significant drop in all performance metrics. This highlights ResNet's critical role in extracting generic aesthetic features that are essential for the model's overall performance. Our results underscore the importance of this component more dramatically than the original study, suggesting that our model may be more reliant on generic aesthetic features, or possibly that our dataset emphasizes aspects of aesthetics that are particularly sensitive to the contributions of ResNet.
 
@@ -180,10 +180,8 @@ The original paper's ablation results showed a systematic decline across metrics
 Both our study and the original paper highlight the complex interplay between different components in determining the performance of aesthetic assessment models. As we continue to push the boundaries of what these models can achieve, it becomes increasingly important to understand not just what each part does, but how they work together to produce the final assessment outcome. Our findings add a valuable perspective to the ongoing discussion about the optimization and application of aesthetic assessment models in real-world scenarios.
 
 
-
 ### Implications of New Data Results
 
-#### Challenges with New Datasets
 Testing the model on new datasets composed of images rated via a Google Form revealed lower performance. This could be attributed to several factors:
 - **Dataset Quality and Size**: The new dataset was smaller and not curated with the same rigor as the BAID dataset.
 - **Voting Bias**: The voting mechanism allowed participants to rate images without comparison, potentially skewing the results towards more favorable outcomes.
@@ -193,7 +191,7 @@ This highlights the challenges in generalizing the trained models across differe
 ### Reflection on Methodological Variations
 
 #### Code Revamping Impact
-The introduction of a dynamic path management and weight loading system proved crucial for adapting the SAAN model to different computational environments and for facilitating continuous training sessions. These improvements not only enhanced the model's usability across platforms but also prevented potential data loss, thereby making the research process more resilient and efficient.
+The introduction of a dynamic path management and weight loading system proved crucial for adapting the SAAN model to different computational environments and for facilitating continuous training sessions. These improvements not only enhanced the model's usability across platforms but also prevented potential data loss, thereby making the research process more dynamic, resilient and efficient.
 
 ### Concluding Thoughts
 
