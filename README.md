@@ -248,3 +248,7 @@ Further studies should focus on exploring the impact of different architectural 
 - **Responsible for:** New code variant criteria
 - **Also worked on:** Reproduction, Ablation Study, Specifically: Training the model and reproducing the results as well as modifying the code for the ablation study
 
+### Roan
+- **Responsible for:** Custom dataset experiment
+- **Also worked on:** Ablation Study, Specifically: Training the model without ResNet, getting the results of the custom dataset tested on all the different models
+
