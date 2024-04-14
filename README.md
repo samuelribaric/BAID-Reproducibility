@@ -125,13 +125,38 @@ This section provides an overview of the outcomes from our project efforts, incl
 #### Earlier Training Stages Yielded Better Results
 One notable observation from our reproduction study was that earlier training epochs, particularly Epoch 39, showed slightly better performance in terms of accuracy compared to the final model at Epoch 99. This could suggest potential overfitting as the training progressed, or it might indicate that the model reaches an optimal state of learning earlier than anticipated. This finding prompts a reevaluation of the training duration and may lead to more efficient training strategies by implementing early stopping or adjusting learning rates dynamically.
 
-### Insights from the Ablation Study
+## Detailed Comparison of Ablation Studies
 
-#### Performance without ResNet
-The ablation study highlighted significant performance drops when the ResNet component was removed from the model architecture. This underscores ResNet's role in capturing complex patterns in artistic aesthetics, which are possibly pivotal for higher accuracy in assessments. The results demonstrate the importance of deep architectures in handling the nuanced task of image aesthetic assessment.
+### Overview of Ablation Study Results
 
-#### Significance and Pearson Metrics
-The consistently low p-values observed in our tests for the testing on the BAID dataset underscore the statistical significance of the results obtained, confirming that the findings are unlikely due to random chance. Meanwhile, the Pearson correlation coefficients provide insights into the linear correlation between model predictions and human judgments, reflecting the model's effectiveness in mimicking human aesthetic assessments.
+Our ablation study results provided intriguing insights, particularly when contrasted with those from the original paper. In the original study, the removal of various model components generally led to a decrease in performance, but the overall impact was relatively moderate. This suggests that while each component contributes to the model's effectiveness, the architecture is robust enough to maintain reasonable performance even when individual elements are disabled.
+
+### Specific Findings from Our Study
+
+#### Impact of Removing VGG and ResNet
+- **Without VGG**: The performance of our model showed minimal impact when the VGG, responsible for style-specific feature extraction, was removed. This was somewhat unexpected given the importance typically attributed to style in artistic assessments, but it indicates that the remaining components of the model can compensate effectively for the loss of style-specific input.
+  
+- **Without ResNet**: Contrary to the minimal impact seen with the removal of VGG, eliminating ResNet resulted in a significant drop in all performance metrics. This highlights ResNet's critical role in extracting generic aesthetic features that are essential for the model's overall performance. Our results underscore the importance of this component more dramatically than the original study, suggesting that our model may be more reliant on generic aesthetic features, or possibly that our dataset emphasizes aspects of aesthetics that are particularly sensitive to the contributions of ResNet.
+
+### Comparative Analysis with Original Study
+The original paper's ablation results showed a systematic decline across metrics when removing components, but none as dramatic as our findings with the removal of ResNet. This could indicate differences in model dependency on certain features, or it might reflect variations in dataset characteristics where certain features play a more pivotal role.
+
+#### Insights into Model Resilience and Component Dependency
+- **Model Resilience**: The original SAAN model demonstrated a degree of resilience, managing to retain much of its effectiveness despite the removal of significant components. This suggests a well-integrated architecture where components can somewhat compensate for each other.
+  
+- **Component Dependency**: Our findings suggest a higher dependency on ResNet within our model's architecture compared to the original study. This dependency could be reflective of the nuances in how aesthetic features are processed and utilized within different implementations or adaptations of the model.
+
+### Broader Implications
+- **Understanding Component Roles**: These ablation studies are crucial for understanding the distinct roles and importance of various model components. They inform not only the design of more efficient and targeted models but also help in fine-tuning existing models for specific applications or datasets.
+
+- **Future Model Improvements**: The insights from these studies could guide future modifications to the SAAN model, such as exploring alternative or additional components that could enhance style or generic aesthetic feature extraction without compromising other aspects of performance.
+
+- **Expanding Ablation Studies**: Future work should consider more granular ablation studies that not only remove entire branches but also test the impact of varying layers or subsets of features within those branches. This could provide deeper insights into the model's operational dynamics and offer more precise guidance for enhancements.
+
+### Concluding Thoughts
+Both our study and the original paper highlight the complex interplay between different components in determining the performance of aesthetic assessment models. As we continue to push the boundaries of what these models can achieve, it becomes increasingly important to understand not just what each part does, but how they work together to produce the final assessment outcome. Our findings add a valuable perspective to the ongoing discussion about the optimization and application of aesthetic assessment models in real-world scenarios.
+
+
 
 ### Implications of New Data Results
 
