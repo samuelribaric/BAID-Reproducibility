@@ -4,6 +4,10 @@ Roan Rosema
 6079598
 r.rosema@student.tudelft.nl
 
+Margot Pauelsen
+6063969
+m.pauelsen@student.tudelft.nl
+
 ## Introduction
 
 In our reproduction project, we revisited the CVPR2023 paper entitled "Towards Artistic Image Aesthetics Assessment: a Large-scale Dataset and a New Method" which introduces a significant dataset, BAID, and a novel method, SAAN (Style-specific Art Assessment Network). This paper addresses the subjective and complex task of artistic image aesthetic assessment (AIAA) by proposing a large-scale dataset of 60,337 artistic images and a new method that integrates style-specific and generic aesthetic information. Our objective was to replicate the results presented in the paper to validate the efficacy of SAAN and explore its performance on different datasets, rewriting the code for efficiency and readability, and perform an ablation study.
