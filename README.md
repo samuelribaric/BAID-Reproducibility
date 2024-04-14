@@ -18,7 +18,27 @@ Given the extensive computational demands of training the SAAN model — taking 
 - **Mid-Training Weight Saving**: We've instituted a robust checkpointing mechanism that saves the model's weights at regular intervals during the training process. This incremental saving is a safeguard against data loss from potential crashes, memory overflows, or the exceeding of Kaggle's 12-hour session limit. The model's training can be resumed from the last saved checkpoint, conserving both time and computational resources.
 
 
-## Testing on New Dataset ##
+## Testing on New Datasets ##
+We evaluated the SAAN model on two additional datasets; the Vienna Art Picture System and a custom dataset we created for this purpose.
+
+### Vienna Art Picture System ###
+The Vienna Art Picture System (VAPS) is one of the small AIAA datasets that is also mentioned in the original paper. This dataset contains 999 images of fine-art paintings from 347 different European painters across 13 different periods and styles. The rating was obtained from 60 German students, who each rated a subsection of the total dataset. For the purpose of evaluating the SAAN model on the VAPS dataset, we considered the average ‘liking’ score for each artwork. We transformed these scores that were originally on a scale from 1-7 to a 1-10 scale, and further transformed the folder and file structure to match the BAID dataset without modifying the images. Evaluating the SAAN model on the VAPS dataset returned the following results:
+
+| Metric                     | Value                  |
+|----------------------------|------------------------|
+| Spearman R Statistic       | 0.034 	              |
+| Spearman R p-value         | 0.277                  |
+| Pearson Statistic          | 0.030                  |
+| Pearson p-value            | 0.351                  |
+| Accuracy                   | 0.409                  |
+
+The results show a non-significant Spearman’s rank correlation, non-significant Pearson correlation, and an accuracy of 0.41. 
+
+We adopted the method of measuring accuracy from the original paper. TODO measured by comparing whether both the prediction and the true value were either over 5 or below 5, which means that the expected accuracy of two unrelated samples would be 0.5, as long as the scores average around 5 and the distributions are symmetric. Given this fact, the accuracy of 0.41 is unimpressive and does not suggest that the SAAN can predict the aesthetic value of the artworks contained in the VAPS. Likewise, the correlation statistics are both close to zero and unsignificant (p > 0.05). This suggests that ..........
+
+A possible explanation for these results may be the lack of variation in aesthetic value across the VAPS dataset, as all images are fine-art paintings by renowned artists and therefore may be presumed to be of high aesthetic value. However, the mean prediction score that the SAAN model outputs is 4.52 (std. 0.36). When comparing the VAPS predictions to the predictions for the BAID dataset however, we see that the mean prediction score for the BAID dataset is slightly higher with 4.56 (std. 0.40). The SAAN model therefore does not recognise images in the VAPS to be of higher aesthetic quality in general. 
+
+### Custom Dataset###
 We decided to run an experiment on a different dataset of new images. For this, we downloaded 25 copyright free images of (oil) paintings (unsplashed.com) and put these images in a google form. For each image, the person filling in the form gets two tasks: 
 - Answer *Yes* or *No* to the question: Do you consider this artwork to be pleasing and good-looking?
 - Give a rating of the artwork on a scale of 1 to 10
@@ -70,50 +90,49 @@ This section provides an overview of the outcomes from our project efforts, incl
 
 | Metric                     | Value                  |
 |----------------------------|------------------------|
-| Significance Statistic     | 0.472                  |
-| Significance p-value       | 0.0                    |
+| Spearman R Statistic       | 0.472                  |
+| Spearman R p-value         | < 0.001                |
 | Pearson Statistic          | 0.467                  |
-| Pearson p-value            | 0.0                    |
+| Pearson p-value            | < 0.001                |
 | Accuracy                   | 0.767                  |
 
 #### Epoch 39 (First training)
 
 | Metric                     | Value                  |
 |----------------------------|------------------------|
-| Significance Statistic     | 0.462                  |
-| Significance p-value       | 0.0                    |
+| Spearman R Statistic       | 0.462                  |
+| Spearman R p-value         | < 0.001                |
 | Pearson Statistic          | 0.468                  |
-| Pearson p-value            | 0.0                    |
+| Pearson p-value            | < 0.001                |
 | Accuracy                   | 0.780                  |
 
 #### Epoch 99 (Finished Training)
 
 | Metric                     | Value                  |
 |----------------------------|------------------------|
-| Significance Statistic     | 0.462                  |
-| Significance p-value       | 0.0                    |
+| Spearman R Statistic       | 0.462                  |
+| Spearman R p-value         | < 0.001                |
 | Pearson Statistic          | 0.467                  |
-| Pearson p-value            | 0.0                    |
+| Pearson p-value            | < 0.001                |
 | Accuracy                   | 0.779                  |
 
 ### Ablation Study: Performance without ResNet
 
-| Dataset    | Significance Statistic | Significance p-value  | Pearson Statistic  | Pearson p-value     | Accuracy |
+| Dataset    | Spearman R Statistic   | Spearman R p-value    | Pearson Statistic  | Pearson p-value     | Accuracy |
 |------------|------------------------|-----------------------|--------------------|---------------------|----------|
-| BAID       | 0.099                  | 2.77e-15              | 0.103              | 1.54e-16            | 0.238    |
+| BAID       | 0.099                  | < 0.001               | 0.103              | < 0.001             | 0.238    |
 | form_data1 | -0.318                 | 0.121                 | -0.294             | 0.154               | 0.240    |
 | form_data2 | -0.305                 | 0.139                 | -0.278             | 0.179               | 0.080    |
 | form_data3 | -0.318                 | 0.121                 | -0.295             | 0.152               | 0.320    |
 
 ### Performance without VGG
 
-| Dataset    | Significance Statistic | Significance p-value | Pearson Statistic  | Pearson p-value     | Accuracy |
+| Dataset    | Spearman R Statistic   | Spearman R p-value   | Pearson Statistic  | Pearson p-value     | Accuracy |
 |------------|------------------------|----------------------|--------------------|---------------------|----------|
-| BAID       | 0.281                  | 4.32e-116            | 0.275              | 1.04e-111           | 0.761    |
+| BAID       | 0.281                  | < 0.001              | 0.275              | < 0.001             | 0.761    |
 | form_data1 | 0.069                  | 0.745                | -0.015             | 0.942               | 0.200    |
 | form_data2 | 0.099                  | 0.637                | 0.082              | 0.696               | 0.040    |
 | form_data3 | 0.069                  | 0.745                | -0.015             | 0.945               | 0.360    |
-
 
 ## Model Performance on Artwork
 
@@ -198,6 +217,4 @@ The introduction of a dynamic path management and weight loading system proved c
 The discrepancies and unexpected findings from our reproduction effort suggest that while the SAAN model is robust under certain conditions, its performance varies significantly with changes in dataset characteristics and model architecture. These insights are invaluable for future research in the field of artistic image aesthetics assessment, providing a clearer path towards refining and adapting these models for broader applications.
 
 Further studies should focus on exploring the impact of different architectural components more systematically and expanding the model's testing across diverse datasets to better understand its generalizability and limitations.
-
-
 
