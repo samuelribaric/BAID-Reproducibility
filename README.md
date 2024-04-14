@@ -62,7 +62,9 @@ The spreadsheet with all of the results and additional calculations can be found
 
 ## Ablation Study ##
 
-We thought it would be interesting to see what would happen when we did an ablation study for this project. In the paper it is mentioned how they combine multiple components like VGG and Restnet. We decided to take these components out of the training loop and see what the results would be. The performance can be seen in the results section, right below this section. It immediately strikes out that the model performs really bad when Resnet is taken out of the loop. However, when VGG is taken out of the loop it performs similarly as when it was still in the loop. This was a really interesting result and this could mean that VGG is not really neccessary for this model to perform well on the given dataset. We also ran these models on our own dataset. The meaning of each of the form datas can be found in the new dataset part, right above this part. Because it was only 25 pictures, the results are not significant at all and the results are also really bad. However we thought it was fun to check what the model would do and the results can be seen in the results section below.
+<img src="blob:https://web.whatsapp.com/27534ed7-0b32-4b04-830f-a011b95eef42"/>
+
+We thought it would be interesting to see what would happen when we did an ablation study for this project. In the paper it is mentioned how they combine multiple components like a Style Feature Extractor (VGG) and an AestheticFeature Extractor (Restnet). We decided to take these components out of the training loop and see what the results would be. The performance can be seen in the results section, right below this section. It immediately strikes out that the model performs really bad when Resnet is taken out of the loop. However, when VGG is taken out of the loop it performs similarly as when it was still in the loop. This was a really interesting result and this could mean that VGG is not really neccessary for this model to perform well on the given dataset. We also ran these models on our own dataset. The meaning of each of the form datas can be found in the new dataset part, right above this part. Because it was only 25 pictures, the results are not significant at all and the results are also really bad. However we thought it was fun to check what the model would do and the results can be seen in the results section below.
 
 <img src="https://github.com/samuelribaric/BAID-Reproducibility/assets/44850442/6da4e2c9-0bef-4a95-8ddb-a14ec440cd4d" alt="11064" width="200"/>
 
@@ -110,9 +112,9 @@ This section provides an overview of the outcomes from our project efforts, incl
 | Dataset        | Significance Statistic | Significance p-value  | Pearson Statistic  | Pearson p-value     | Accuracy   |
 |----------------|------------------------|-----------------------|--------------------|---------------------|------------|
 | BAID           | 0.0985474602591078     | 2.769451136158405e-15 | 0.1029179598080305 | 1.5432773274448345e-16 | 0.23816221284575714 |
-| form_data1.csv | -0.31844457134806753   | 0.12080277186000737   | -0.2940150947209376| 0.15370386745737993 | 0.24       |
-| form_data2.csv | -0.3046153846153846    | 0.13872654983076974   | -0.2776495897322667| 0.1790218015069261  | 0.08       |
-| form_data3.csv | -0.31844457134806753   | 0.12080277186000737   | -0.2953613439152013| 0.1517407447601908  | 0.32       |
+| form_data1 | -0.31844457134806753   | 0.12080277186000737   | -0.2940150947209376| 0.15370386745737993 | 0.24       |
+| form_data2 | -0.3046153846153846    | 0.13872654983076974   | -0.2776495897322667| 0.1790218015069261  | 0.08       |
+| form_data3 | -0.31844457134806753   | 0.12080277186000737   | -0.2953613439152013| 0.1517407447601908  | 0.32       |
 
 ### Performance without VGG
 
@@ -121,9 +123,9 @@ This section provides an overview of the outcomes from our project efforts, incl
 | Dataset        | Significance Statistic | Significance p-value | Pearson Statistic  | Pearson p-value     | Accuracy   |
 |----------------|------------------------|----------------------|--------------------|---------------------|------------|
 | BAID           | 0.28059646018021484    | 4.315794067754801e-116| 0.2753714573832638 | 1.0384372460027474e-111 | 0.7610564150648539 |
-| form_data1.csv | 0.0685406695283628     | 0.7447714241446419   | -0.015240836022584673 | 0.9423577832017125 | 0.2        |
-| form_data2.csv | 0.09923076923076923    | 0.6369836836671996   | 0.08233920024385069| 0.6955871335049199  | 0.04       |
-| form_data3.csv | 0.0685406695283628     | 0.7447714241446419   | -0.01461946420573074 | 0.9447042784323637 | 0.36       |
+| form_data1 | 0.0685406695283628     | 0.7447714241446419   | -0.015240836022584673 | 0.9423577832017125 | 0.2        |
+| form_data2 | 0.09923076923076923    | 0.6369836836671996   | 0.08233920024385069| 0.6955871335049199  | 0.04       |
+| form_data3 | 0.0685406695283628     | 0.7447714241446419   | -0.01461946420573074 | 0.9447042784323637 | 0.36       |
 
 ## Discussion
 
