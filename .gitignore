@@ -1,3 +1,4 @@
 checkpoint/ResNet_Pretrain/epoch_99.pth
 checkpoint/BAID/model_best.pth
 images
+checkpoint/VGG/vgg19_weights.pth

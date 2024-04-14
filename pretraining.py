@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from data import PretrainingDataset
-from model import ResNetPretrain
+from models.model import ResNetPretrain
 import argparse
 import torch.optim as optim
 from pretraining_utils.pretrain_losses import cal_deg_loss, cal_trp_loss
@@ -10,7 +10,8 @@ from common import *
 import time
 import torchvision.transforms as transforms
 import os
-
+from config import BASE_PATH, SAVE_DIR
+import os
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -26,7 +27,7 @@ def parse_args():
     # trp loss weight
     parser.add_argument('--trp_weight', type=float, default=0.1)
     parser.add_argument('--checkpoint_dir', type=str,
-                        default='checkpoint/ResNet_Pretrain')
+                        default= os.path.join(BASE_PATH, 'checkpoint/ResNet_Pretrain'))
 
     parser.add_argument('--save_freq', type=int,
                         default=2)

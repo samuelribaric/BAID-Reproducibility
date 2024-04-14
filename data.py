@@ -8,7 +8,7 @@ import time
 import os
 from tqdm import tqdm
 import pandas as pd
-
+from config import BASE_PATH
 mean = [0.485, 0.456, 0.406]  # RGB
 std = [0.229, 0.224, 0.225]
 
@@ -16,8 +16,8 @@ std = [0.229, 0.224, 0.225]
 class PretrainingDataset(Dataset):
     def __init__(self, path_csv=None, opt_csv=None) -> None:
         print("Start loading data into Mem")
-        paths = pd.read_csv(path_csv)
-        opts = pd.read_csv(opt_csv)
+        paths = pd.read_csv(os.path.join(BASE_PATH, path_csv))
+        opts = pd.read_csv(os.path.join(BASE_PATH, opt_csv))
         self.original_paths = paths['origin'].values.tolist() * 3
         self.degraded_paths = paths['opt1'].values.tolist() + paths['opt2'].values.tolist() + paths['opt3'].values.tolist()
         self.trp_paths = paths['trp1_1'].values.tolist() + paths['trp2_1'].values.tolist() + paths['trp3_1'].values.tolist()
@@ -60,6 +60,20 @@ class PretrainingDataset(Dataset):
 class BBDataset(Dataset):
     def __init__(self, file_dir='dataset', type='train', test=False):
         self.if_test = test
+
+
+        primary_images_path = os.path.join(BASE_PATH, 'images')
+        secondary_images_path = '/kaggle/input/baid-dataset-full-set-of-images/images'
+                                 
+        # Determine which images path exists and use it
+        if os.path.exists(primary_images_path):
+            self.base_images_path = primary_images_path
+        elif os.path.exists(secondary_images_path):
+            self.base_images_path = secondary_images_path
+        else:
+            raise FileNotFoundError("Images directory not found in either expected location.")
+
+
         self.train_transformer = transforms.Compose(
             [
                 transforms.ToPILImage(),
@@ -83,17 +97,21 @@ class BBDataset(Dataset):
         self.pic_paths = []
         self.labels = []
 
+        full_file_dir = os.path.join(BASE_PATH, file_dir)
+        
         if type == 'train':
-            DATA = pd.read_csv(os.path.join(file_dir, 'train_set.csv'))
+            DATA = pd.read_csv(os.path.join(full_file_dir, 'train_set.csv'))
         elif type == 'validation':
-            DATA = pd.read_csv(os.path.join(file_dir, 'val_set.csv'))
+            DATA = pd.read_csv(os.path.join(full_file_dir, 'val_set.csv'))
         elif type == 'test':
-            DATA = pd.read_csv(os.path.join(file_dir, 'test_set.csv'))
+            DATA = pd.read_csv(os.path.join(full_file_dir, 'test_set.csv'))
+        elif type == 'vaps':
+            DATA = pd.read_csv(os.path.join(full_file_dir, 'vaps_dataset.csv'))
 
         labels = DATA['score'].values.tolist()
         pic_paths = DATA['image'].values.tolist()
         for i in tqdm(range(len(pic_paths))):
-            pic_path = os.path.join('images', pic_paths[i])
+            pic_path = os.path.join(self.base_images_path, pic_paths[i])
             label = float(labels[i] / 10)
             self.pic_paths.append(pic_path)
             self.labels.append(label)
@@ -104,6 +122,8 @@ class BBDataset(Dataset):
     def __getitem__(self, index):
         pic_path = self.pic_paths[index]
         img = cv.imread(pic_path)
+        if img is None:
+            raise FileNotFoundError(f"Image not found at path: {pic_path}")
         img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
         if self.if_test:
             img = self.test_transformer(img)
