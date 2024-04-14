@@ -121,21 +121,21 @@ We tested our model with selected artworks to compare the initial aesthetic scor
 
 ### Artwork 1
 
-![Artwork 1](https://github.com/samuelribaric/BAID-Reproducibility/tree/experimental/kaggle/docs/15418.jpg "Artwork Analysis 1")
+![Artwork 1](https://raw.githubusercontent.com/samuelribaric/BAID-Reproducibility/experimental/kaggle/docs/15418.jpg "Artwork Analysis 1")
 
 - **Initial Score:** 5.6506
 - **Model's Prediction:** 4.303
 
 ### Artwork 2
 
-![Artwork 2](https://github.com/samuelribaric/BAID-Reproducibility/tree/experimental/kaggle/docs/61963.jpg "Artwork Analysis 2")
+![Artwork 2](https://raw.githubusercontent.com/samuelribaric/BAID-Reproducibility/experimental/kaggle/docs/61963.jpg "Artwork Analysis 2")
 
 - **Initial Score:** 5.3349
 - **Model's Prediction:** 4.660
 
 ### Artwork 3
 
-![Artwork 3](https://github.com/samuelribaric/BAID-Reproducibility/tree/experimental/kaggle/docs/49509.jpg "Artwork Analysis 3")
+![Artwork 3](https://raw.githubusercontent.com/samuelribaric/BAID-Reproducibility/experimental/kaggle/docs/49509.jpg "Artwork Analysis 3")
 
 - **Initial Score:** 7.8236
 - **Model's Prediction:** 5.466
