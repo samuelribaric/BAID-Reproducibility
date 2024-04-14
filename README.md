@@ -119,6 +119,8 @@ The spreadsheet with all of the results and additional calculations can be found
 
 ## Ablation Study ##
 
+<img src="https://github.com/samuelribaric/BAID-Reproducibility/blob/experimental/kaggle/docs/Screenshot%202024-04-14%20at%2021.57.29.png?raw=true" alt="SAAN Model">
+
 In our project, we aimed to expand upon the foundational research presented in the paper on the "Style-specific Art Assessment Network (SAAN)," which discusses the use of style-specific (SAB) and generic aesthetic (GAB) features for evaluating artistic images. The original SAAN framework is structured around two main components: a Style-specific Aesthetic Branch utilizing a VGG-19 backbone for style-specific feature extraction, and a Generic Aesthetic Branch that employs a ResNet-50 backbone for generic aesthetic features, complemented by a Spatial Information Fusion Module.
 
 While the paper conducts a thorough ablation study examining the effects of removing entire branches (SAB, GAB) and other components, it does not isolate the impact of individual elements within the SAB, such as the VGG (style feature extractor) and the ResNet (aesthetic feature extractor). To bridge this gap and deepen our understanding of the SAAN's component-wise significance, we pursued targeted ablations:
