@@ -17,10 +17,8 @@ Given the extensive computational demands of training the SAAN model — taking 
 - **Weight Loading**: The model now supports the loading of pre-trained weights. This feature is particularly crucial as it allows for continuity in training beyond a single session. Researchers can now pick up from where the last successful training epoch ended without the necessity to start afresh.
 - **Mid-Training Weight Saving**: We've instituted a robust checkpointing mechanism that saves the model's weights at regular intervals during the training process. This incremental saving is a safeguard against data loss from potential crashes, memory overflows, or the exceeding of Kaggle's 12-hour session limit. The model's training can be resumed from the last saved checkpoint, conserving both time and computational resources.
 
-- **Impact of Refactoring**:
 
-
-#### New Dataset
+## Testing on New Dataset ##
 We decided to run an experiment on a different dataset of new images. For this, we downloaded 25 copyright free images of (oil) paintings (unsplashed.com) and put these images in a google form. For each image, the person filling in the form gets two tasks: 
 - Answer *Yes* or *No* to the question: Do you consider this artwork to be pleasing and good-looking?
 - Give a rating of the artwork on a scale of 1 to 10
@@ -47,9 +45,6 @@ We then used the equations to get the new scores for all the images, which were 
 We stored the scores in a new .CSV file: form_data3.csv. And we ran this file getting the following results:
 
 RESULT HERE
-
-
-
 
 
 As you can see, the model still performs relatively badly compared to testing on any test set of the original BAID dataset, but it is already better than the files we used previously.
