@@ -102,8 +102,6 @@ This section provides an overview of the outcomes from our project efforts, incl
 
 ### Ablation Study: Performance without ResNet
 
-#### Test on Various Datasets
-
 | Dataset        | Significance Statistic | Significance p-value  | Pearson Statistic  | Pearson p-value     | Accuracy   |
 |----------------|------------------------|-----------------------|--------------------|---------------------|------------|
 | BAID           | 0.0985474602591078     | 2.769451136158405e-15 | 0.1029179598080305 | 1.5432773274448345e-16 | 0.23816221284575714 |
@@ -112,8 +110,6 @@ This section provides an overview of the outcomes from our project efforts, incl
 | form_data3 | -0.31844457134806753   | 0.12080277186000737   | -0.2953613439152013| 0.1517407447601908  | 0.32       |
 
 ### Performance without VGG
-
-#### Test on Various Datasets
 
 | Dataset        | Significance Statistic | Significance p-value | Pearson Statistic  | Pearson p-value     | Accuracy   |
 |----------------|------------------------|----------------------|--------------------|---------------------|------------|
@@ -135,7 +131,7 @@ One notable observation from our reproduction study was that earlier training ep
 The ablation study highlighted significant performance drops when the ResNet component was removed from the model architecture. This underscores ResNet's role in capturing complex patterns in artistic aesthetics, which are possibly pivotal for higher accuracy in assessments. The results demonstrate the importance of deep architectures in handling the nuanced task of image aesthetic assessment.
 
 #### Significance and Pearson Metrics
-The consistently low p-values observed in our tests underscore the statistical significance of the results obtained, confirming that the findings are unlikely due to random chance. Meanwhile, the Pearson correlation coefficients provide insights into the linear correlation between model predictions and human judgments, reflecting the model's effectiveness in mimicking human aesthetic assessments.
+The consistently low p-values observed in our tests for the testing on the BAID dataset underscore the statistical significance of the results obtained, confirming that the findings are unlikely due to random chance. Meanwhile, the Pearson correlation coefficients provide insights into the linear correlation between model predictions and human judgments, reflecting the model's effectiveness in mimicking human aesthetic assessments.
 
 ### Implications of New Data Results
 
