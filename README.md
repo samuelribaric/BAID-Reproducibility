@@ -31,10 +31,27 @@ After creating the form, we distributed them to random people to get their opini
 In the spreadsheet we calculated the amount of Yes votes of the first question compared to the amount of total votes for each image and calculated a grade based on this. Besides this, we also calculated the average of the second question for each image.  We then made a .CSV file for both of these grades: form_data1.csv and form_data2.csv.
 We ran both of these files on the model and got the following results:
 
-RESULTS HERE
+#### Model on form_data1
 
+| Metric                     | Value                  |
+|----------------------------|------------------------|
+| Significance Statistic     | 0.045                  |
+| Significance p-value       | 0.828                    |
+| Pearson Statistic          | 0.172                  |
+| Pearson p-value            | 0.41                    |
+| Accuracy                   | 0.24                  |
 
-The accuracy and scores of the model were very low.
+#### Model on form_data2
+
+| Metric                     | Value                  |
+|----------------------------|------------------------|
+| Significance Statistic     | -0.016                  |
+| Significance p-value       | 0.939                    |
+| Pearson Statistic          | 0.467                  |
+| Pearson p-value            | 0.115                    |
+| Accuracy                   | 0.586                  |
+
+The accuracy and scores of the model were, as you can see, very low.
 We quickly realized that the grades we got from the form were way higher than the grades of the images in the BAID dataset that were used to train the model, and we had to make some changes. We used the same sigmoid-like function used in the paper to get new scores based on the amount of *Yes* votes: 
 
 ![sigmoid function](https://github.com/samuelribaric/BAID-Reproducibility/assets/57133973/fa6577b5-358c-4c4f-a8a5-10d6a3bb7363)
@@ -46,10 +63,17 @@ For our results, the variables can be explained as follows:
 We then used the equations to get the new scores for all the images, which were way more concurrent to the BAID dataset regarding the grades.
 We stored the scores in a new .CSV file: form_data3.csv. And we ran this file getting the following results:
 
-RESULT HERE
+#### Model on form_data3
 
+| Metric                     | Value                  |
+|----------------------------|------------------------|
+| Significance Statistic     | 0.045                  |
+| Significance p-value       | 0.828                    |
+| Pearson Statistic          | 0.172                  |
+| Pearson p-value            | 0.411                    |
+| Accuracy                   | 0.4                  |
 
-As you can see, the model still performs relatively badly compared to testing on any test set of the original BAID dataset, but it is already better than the files we used previously.
+As you can see, the model still performs relatively badly compared to testing on any test set of the original BAID dataset, but it is already a tad bit better than the files we used previously.
 
 Although the model seems to not work as well on this dataset, this could largely be due to problems with the dataset itself and how the experiment was conducted. Instead of people voting for an image like done with the BAID dataset, people get the choice of finding a painting good-looking or not. People most likely tend to vote ‘Yes’ quicker when not necessarily comparing paintings, but just getting the choice of liking or not liking a painting, in turn skewing the grades to be higher. If the 25 images were presented in a manner more correlated to the way it was done with the BAID dataset where people could vote on the paintings, results might have differed. 
 
