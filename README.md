@@ -69,54 +69,54 @@ This is a picture of an example image out of the dataset. When rated by people, 
 
 This section provides an overview of the outcomes from our project efforts, including reproducing the original paper's results, evaluating new datasets, and conducting an ablation study with modified model configurations.
 ### Reproduced Results
-
 #### Initial Test with Weights from Authors
 
 | Metric                     | Value                  |
 |----------------------------|------------------------|
-| Significance Statistic     | 0.4721614384229233     |
+| Significance Statistic     | 0.472                  |
 | Significance p-value       | 0.0                    |
-| Pearson Statistic          | 0.466993115611886      |
+| Pearson Statistic          | 0.467                  |
 | Pearson p-value            | 0.0                    |
-| Accuracy                   | 0.7673073917799657     |
+| Accuracy                   | 0.767                  |
 
 #### Epoch 39 (First training)
 
 | Metric                     | Value                  |
 |----------------------------|------------------------|
-| Significance Statistic     | 0.46154713882667087    |
+| Significance Statistic     | 0.462                  |
 | Significance p-value       | 0.0                    |
-| Pearson Statistic          | 0.4676182473919227     |
+| Pearson Statistic          | 0.468                  |
 | Pearson p-value            | 0.0                    |
-| Accuracy                   | 0.7798093452101891     |
+| Accuracy                   | 0.780                  |
 
 #### Epoch 99 (Finished Training)
 
 | Metric                     | Value                  |
 |----------------------------|------------------------|
-| Significance Statistic     | 0.46196337871776366    |
+| Significance Statistic     | 0.462                  |
 | Significance p-value       | 0.0                    |
-| Pearson Statistic          | 0.4673758142171795     |
+| Pearson Statistic          | 0.467                  |
 | Pearson p-value            | 0.0                    |
-| Accuracy                   | 0.7788716987029223     |
+| Accuracy                   | 0.779                  |
 
 ### Ablation Study: Performance without ResNet
 
-| Dataset        | Significance Statistic | Significance p-value  | Pearson Statistic  | Pearson p-value     | Accuracy   |
-|----------------|------------------------|-----------------------|--------------------|---------------------|------------|
-| BAID           | 0.0985474602591078     | 2.769451136158405e-15 | 0.1029179598080305 | 1.5432773274448345e-16 | 0.23816221284575714 |
-| form_data1 | -0.31844457134806753   | 0.12080277186000737   | -0.2940150947209376| 0.15370386745737993 | 0.24       |
-| form_data2 | -0.3046153846153846    | 0.13872654983076974   | -0.2776495897322667| 0.1790218015069261  | 0.08       |
-| form_data3 | -0.31844457134806753   | 0.12080277186000737   | -0.2953613439152013| 0.1517407447601908  | 0.32       |
+| Dataset    | Significance Statistic | Significance p-value  | Pearson Statistic  | Pearson p-value     | Accuracy |
+|------------|------------------------|-----------------------|--------------------|---------------------|----------|
+| BAID       | 0.099                  | 2.77e-15              | 0.103              | 1.54e-16            | 0.238    |
+| form_data1 | -0.318                 | 0.121                 | -0.294             | 0.154               | 0.240    |
+| form_data2 | -0.305                 | 0.139                 | -0.278             | 0.179               | 0.080    |
+| form_data3 | -0.318                 | 0.121                 | -0.295             | 0.152               | 0.320    |
 
 ### Performance without VGG
 
-| Dataset        | Significance Statistic | Significance p-value | Pearson Statistic  | Pearson p-value     | Accuracy   |
-|----------------|------------------------|----------------------|--------------------|---------------------|------------|
-| BAID           | 0.28059646018021484    | 4.315794067754801e-116| 0.2753714573832638 | 1.0384372460027474e-111 | 0.7610564150648539 |
-| form_data1 | 0.0685406695283628     | 0.7447714241446419   | -0.015240836022584673 | 0.9423577832017125 | 0.2        |
-| form_data2 | 0.09923076923076923    | 0.6369836836671996   | 0.08233920024385069| 0.6955871335049199  | 0.04       |
-| form_data3 | 0.0685406695283628     | 0.7447714241446419   | -0.01461946420573074 | 0.9447042784323637 | 0.36       |
+| Dataset    | Significance Statistic | Significance p-value | Pearson Statistic  | Pearson p-value     | Accuracy |
+|------------|------------------------|----------------------|--------------------|---------------------|----------|
+| BAID       | 0.281                  | 4.32e-116            | 0.275              | 1.04e-111           | 0.761    |
+| form_data1 | 0.069                  | 0.745                | -0.015             | 0.942               | 0.200    |
+| form_data2 | 0.099                  | 0.637                | 0.082              | 0.696               | 0.040    |
+| form_data3 | 0.069                  | 0.745                | -0.015             | 0.945               | 0.360    |
+
 
 ## Discussion
 
