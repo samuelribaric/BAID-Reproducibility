@@ -51,6 +51,7 @@ RESULT HERE
 
 
 
+
 As you can see, the model still performs relatively badly compared to testing on any test set of the original BAID dataset, but it is already better than the files we used previously.
 
 Although the model seems to not work as well on this dataset, this could largely be due to problems with the dataset itself and how the experiment was conducted. Instead of people voting for an image like done with the BAID dataset, people get the choice of finding a painting good-looking or not. People most likely tend to vote ‘Yes’ quicker when not necessarily comparing paintings, but just getting the choice of liking or not liking a painting, in turn skewing the grades to be higher. If the 25 images were presented in a manner more correlated to the way it was done with the BAID dataset where people could vote on the paintings, results might have differed. 
@@ -61,7 +62,11 @@ The spreadsheet with all of the results and additional calculations can be found
 
 ## Ablation Study ##
 
-Add our methodology and reasoning for removing VGG and Resnet here, maybe include picture of the model from the paper as well
+We thought it would be interesting to see what would happen when we did an ablation study for this project. In the paper it is mentioned how they combine multiple components like VGG and Restnet. We decided to take these components out of the training loop and see what the results would be. The performance can be seen in the results section, right below this section. It immediately strikes out that the model performs really bad when Resnet is taken out of the loop. However, when VGG is taken out of the loop it performs similarly as when it was still in the loop. This was a really interesting result and this could mean that VGG is not really neccessary for this model to perform well on the given dataset. We also ran these models on our own dataset. The meaning of each of the form datas can be found in the new dataset part, right above this part. Because it was only 25 pictures, the results are not significant at all and the results are also really bad. However we thought it was fun to check what the model would do and the results can be seen in the results section below.
+
+<img src="https://github.com/samuelribaric/BAID-Reproducibility/assets/44850442/6da4e2c9-0bef-4a95-8ddb-a14ec440cd4d" alt="11064" width="200"/>
+
+This is a picture of an example image out of the dataset. When rated by people, it got a rating of 4.352386. When ran on the model, the rating returned was a: I DO NOT HAVE THE RATINGS TO MY DISPOSAL IT IS IMAGE 11064
 
 ## Results
 
