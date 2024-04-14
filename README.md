@@ -120,25 +120,25 @@ This section provides an overview of the outcomes from our project efforts, incl
 
 ## Model Performance on Artwork
 
-We tested our model with selected artworks to compare the initial aesthetic scores with the scores predicted by our model. Below are the results that illustrate how our model performs with real-world artistic images.
+We tested our model with selected artworks to compare the initial aesthetic scores with the scores predicted by our model. Below are the results that illustrate how our model performs with some example entries from the BAID dataset.
 
 ### Artwork 1
 
-<img src="https://github.com/samuelribaric/BAID-Reproducibility/docs/15418.jpg" alt="Artwork Analysis 1" width="600">
+![Artwork 1](https://github.com/samuelribaric/BAID-Reproducibility/docs/15418.jpg "Artwork Analysis 1")
 
 - **Initial Score:** 5.6506
 - **Model's Prediction:** 4.303
 
 ### Artwork 2
 
-<img src="https://github.com/samuelribaric/BAID-Reproducibility/docs/61963.jpg" alt="Artwork Analysis 2" width="600">
+![Artwork 2](https://github.com/samuelribaric/BAID-Reproducibility/docs/61963.jpg "Artwork Analysis 2")
 
 - **Initial Score:** 5.3349
 - **Model's Prediction:** 4.660
 
 ### Artwork 3
 
-<img src="https://github.com/samuelribaric/BAID-Reproducibility/docs/49509.jpg" alt="Artwork Analysis 3" width="600">
+![Artwork 3](https://github.com/samuelribaric/BAID-Reproducibility/docs/49509.jpg "Artwork Analysis 3")
 
 - **Initial Score:** 7.8236
 - **Model's Prediction:** 5.466
