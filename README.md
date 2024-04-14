@@ -119,26 +119,26 @@ This section provides an overview of the outcomes from our project efforts, incl
 
 We tested our model with selected artworks to compare the initial aesthetic scores with the scores predicted by our model. Below are the results that illustrate how our model performs with some example entries from the BAID dataset.
 
-### Artwork 1
+<table>
+<tr>
+    <td>
+        <img src="https://raw.githubusercontent.com/samuelribaric/BAID-Reproducibility/experimental/kaggle/docs/15418.jpg" alt="Artwork Analysis 1" width="300"><br>
+        <strong>Initial Score:</strong> 5.6506<br>
+        <strong>Model's Prediction:</strong> 4.303
+    </td>
+    <td>
+        <img src="https://raw.githubusercontent.com/samuelribaric/BAID-Reproducibility/experimental/kaggle/docs/61963.jpg" alt="Artwork Analysis 2" width="300"><br>
+        <strong>Initial Score:</strong> 5.3349<br>
+        <strong>Model's Prediction:</strong> 4.660
+    </td>
+    <td>
+        <img src="https://raw.githubusercontent.com/samuelribaric/BAID-Reproducibility/experimental/kaggle/docs/49509.jpg" alt="Artwork Analysis 3" width="300"><br>
+        <strong>Initial Score:</strong> 7.8236<br>
+        <strong>Model's Prediction:</strong> 5.466
+    </td>
+</tr>
+</table>
 
-![Artwork 1](https://raw.githubusercontent.com/samuelribaric/BAID-Reproducibility/experimental/kaggle/docs/15418.jpg "Artwork Analysis 1")
-
-- **Initial Score:** 5.6506
-- **Model's Prediction:** 4.303
-
-### Artwork 2
-
-![Artwork 2](https://raw.githubusercontent.com/samuelribaric/BAID-Reproducibility/experimental/kaggle/docs/61963.jpg "Artwork Analysis 2")
-
-- **Initial Score:** 5.3349
-- **Model's Prediction:** 4.660
-
-### Artwork 3
-
-![Artwork 3](https://raw.githubusercontent.com/samuelribaric/BAID-Reproducibility/experimental/kaggle/docs/49509.jpg "Artwork Analysis 3")
-
-- **Initial Score:** 7.8236
-- **Model's Prediction:** 5.466
 
 
 ## Discussion
